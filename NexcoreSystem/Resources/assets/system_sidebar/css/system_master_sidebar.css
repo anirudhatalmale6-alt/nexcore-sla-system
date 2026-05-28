@@ -1,0 +1,626 @@
+/*
+ * ============================================================
+ * NexCore System Master Sidebar
+ * ============================================================
+ *
+ * Component:     system_sidebar
+ * Version:       2.0
+ * Location:      /public/nexcore/system_sidebar/css/system_master_sidebar.css
+ *
+ * Matched to:    NexCore Client Manager nerve-centre sidebar
+ *                Visual parity with nx-sb- classes, independent nxsb- namespace
+ *
+ * Dependencies:
+ *   - Google Fonts: Montserrat (system default font)
+ *   - Font Awesome 6 (icons)
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =========================================================
+   CSS VARIABLES
+   ========================================================= */
+:root {
+    --nxsb-width: 270px;
+    --nxsb-width-collapsed: 62px;
+    --nxsb-border: rgba(255,255,255,0.06);
+    --nxsb-text: rgba(255,255,255,0.6);
+    --nxsb-text-hover: #ffffff;
+    --nxsb-text-active: #ffffff;
+    --nxsb-accent-green: #059669;
+    --nxsb-accent-blue: #2563eb;
+    --nxsb-accent-amber: #d97706;
+    --nxsb-accent-purple: #8b5cf6;
+    --nxsb-accent-cyan: #06b6d4;
+    --nxsb-item-hover-bg: rgba(255,255,255,0.03);
+    --nxsb-item-active-bg: rgba(34,197,94,0.12);
+    --nxsb-item-active-border: #22c55e;
+    --nxsb-transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    --nxsb-font: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   SIDEBAR CONTAINER
+   ========================================================= */
+.nxsb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nxsb-width);
+    height: 100vh;
+    background: #000000;
+    border-right: 1px solid var(--nxsb-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: width var(--nxsb-transition), min-width var(--nxsb-transition);
+    overflow: hidden;
+    font-family: var(--nxsb-font);
+    flex-shrink: 0;
+}
+
+
+.nxsb-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   COLLAPSED STATE
+   ========================================================= */
+.nxsb.nxsb-collapsed {
+    width: var(--nxsb-width-collapsed);
+}
+
+
+/* =========================================================
+   BRAND / LOGO AREA
+   ========================================================= */
+.nxsb-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.nxsb-brand a {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nxsb-brand-logo {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    object-fit: contain;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-brand-logo {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-brand {
+    justify-content: center;
+    padding: 14px 10px;
+}
+
+
+/* =========================================================
+   COLLAPSE / EXPAND TOGGLE BUTTON
+   ========================================================= */
+.nxsb-toggle {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.25s ease;
+}
+
+.nxsb-toggle:hover {
+    background: rgba(34,197,94,0.12);
+    border-color: rgba(34,197,94,0.3);
+    color: #22c55e;
+}
+
+.nxsb.nxsb-collapsed .nxsb-toggle {
+    margin-left: 0;
+}
+
+
+/* =========================================================
+   MENU SECTION
+   ========================================================= */
+.nxsb-menu {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+
+.nxsb-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nxsb-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nxsb-menu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+}
+
+
+/* =========================================================
+   MENU GROUP
+   ========================================================= */
+.nxsb-group {
+    margin-bottom: 4px;
+}
+
+.nxsb-group-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: var(--nxsb-font);
+}
+
+.nxsb-group-label:hover {
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.02);
+}
+
+.nxsb-group.nxsb-group-open > .nxsb-group-label {
+    color: rgba(255,255,255,0.6);
+}
+
+.nxsb-group-arrow {
+    font-size: 9px;
+    transition: transform 0.3s ease;
+    opacity: 0.4;
+    transform: rotate(-90deg);
+}
+
+.nxsb-group.nxsb-group-open > .nxsb-group-label .nxsb-group-arrow {
+    transform: rotate(0deg);
+}
+
+.nxsb-group-items {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nxsb.nxsb-collapsed .nxsb-group-label {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-group-items {
+    max-height: none !important;
+    overflow: visible;
+}
+
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+.nxsb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--nxsb-text);
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.nxsb-item:hover {
+    color: var(--nxsb-text-hover);
+    background: var(--nxsb-item-hover-bg);
+}
+
+.nxsb-item-icon {
+    width: 20px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.nxsb-item-text {
+    overflow: hidden;
+    transition: opacity 0.25s ease, width 0.25s ease;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item-text {
+    opacity: 0;
+    width: 0;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item {
+    justify-content: center;
+    padding: 12px 0;
+    border-left: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item .nxsb-item-icon {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   ACTIVE MENU ITEM
+   ========================================================= */
+.nxsb-item.nxsb-active {
+    color: var(--nxsb-text-active);
+    background: var(--nxsb-item-active-bg);
+    border-left-color: var(--nxsb-item-active-border);
+}
+
+.nxsb-item.nxsb-active .nxsb-item-icon {
+    color: var(--nxsb-accent-green);
+}
+
+
+/* =========================================================
+   EXPANDABLE PARENT (Level 2 with children)
+   ========================================================= */
+.nxsb-section {
+    margin-top: 2px;
+}
+
+.nxsb-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    color: var(--nxsb-text);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--nxsb-font);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nxsb-parent:hover {
+    color: var(--nxsb-text-hover);
+    background: var(--nxsb-item-hover-bg);
+}
+
+.nxsb-parent-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nxsb-parent-left .nxsb-item-icon {
+    width: 20px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.nxsb-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+    opacity: 0.5;
+    transform: rotate(-90deg);
+}
+
+.nxsb-section.nxsb-open > .nxsb-parent .nxsb-arrow {
+    transform: rotate(0deg);
+}
+
+.nxsb-section.nxsb-open > .nxsb-parent {
+    color: var(--nxsb-text-hover);
+}
+
+
+/* =========================================================
+   CHILD ITEMS (Level 3)
+   ========================================================= */
+.nxsb-children {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nxsb-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 48px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.nxsb-child::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+}
+
+.nxsb-child i {
+    width: 16px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.nxsb-child:hover {
+    color: rgba(255,255,255,0.85);
+    background: var(--nxsb-item-hover-bg);
+    padding-left: 52px;
+}
+
+.nxsb-child.nxsb-active {
+    color: #fff;
+    background: var(--nxsb-item-active-bg);
+    border-left-color: var(--nxsb-item-active-border);
+}
+
+.nxsb-child.nxsb-active i {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   COLLAPSED STATE - Parents and Children
+   ========================================================= */
+.nxsb.nxsb-collapsed .nxsb-parent {
+    justify-content: center;
+    padding: 12px 0;
+    border-left: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent-left {
+    justify-content: center;
+    gap: 0;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent-left .nxsb-item-icon {
+    font-size: 16px;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent .nxsb-item-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-arrow {
+    display: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-children {
+    max-height: 0 !important;
+}
+
+.nxsb.nxsb-collapsed .nxsb-child {
+    padding: 8px 0;
+    justify-content: center;
+}
+
+.nxsb.nxsb-collapsed .nxsb-child::before {
+    display: none;
+}
+
+
+/* =========================================================
+   MENU DIVIDER
+   ========================================================= */
+.nxsb-divider {
+    height: 3px;
+    background: rgba(255,255,255,0.5);
+    margin: 8px 16px;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+.nxsb-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--nxsb-border);
+    position: relative;
+}
+
+.nxsb-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: var(--nxsb-border);
+}
+
+.nxsb-footer-text {
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-footer-text {
+    opacity: 0;
+}
+
+.nxsb-footer-line {
+    height: 2px;
+    margin-top: 10px;
+    border-radius: 1px;
+    background: linear-gradient(90deg,
+        var(--nxsb-accent-green) 0%,
+        var(--nxsb-accent-blue) 33%,
+        var(--nxsb-accent-amber) 66%,
+        var(--nxsb-accent-purple) 100%
+    );
+}
+
+
+/* =========================================================
+   TOOLTIP ON COLLAPSED STATE
+   ========================================================= */
+.nxsb.nxsb-collapsed .nxsb-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(var(--nxsb-width-collapsed) + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.nxsb.nxsb-collapsed .nxsb-item:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   BADGE / COUNT
+   ========================================================= */
+.nxsb-badge {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--nxsb-font);
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.04);
+    padding: 2px 7px;
+    border-radius: 8px;
+    min-width: 20px;
+    text-align: center;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-badge {
+    display: none;
+}
+
+
+/* =========================================================
+   MAIN CONTENT PUSH
+   ========================================================= */
+.nxsb-content {
+    margin-left: var(--nxsb-width);
+    transition: margin-left var(--nxsb-transition);
+    min-height: 100vh;
+}
+
+.nxsb.nxsb-collapsed ~ .nxsb-content,
+.nxsb-content.nxsb-content-collapsed {
+    margin-left: var(--nxsb-width-collapsed);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+    .nxsb {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .nxsb.nxsb-mobile-open {
+        transform: translateX(0);
+        box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+    }
+
+    .nxsb-content {
+        margin-left: 0;
+    }
+
+    .nxsb-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+
+    .nxsb.nxsb-mobile-open ~ .nxsb-overlay {
+        display: block;
+    }
+}

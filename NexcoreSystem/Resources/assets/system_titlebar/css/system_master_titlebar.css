@@ -1,0 +1,152 @@
+/*
+ * ============================================================
+ * NexCore System Master Title Bar
+ * ============================================================
+ *
+ * Component:     system_titlebar
+ * Version:       1.0
+ * Location:      /public/nexcore/system_titlebar/css/system_master_titlebar.css
+ *
+ * The top title bar sits at the very top of the page, to the
+ * right of the sidebar. It shows the module name, breadcrumbs,
+ * and user controls.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+/* =========================================================
+   TITLE BAR CONTAINER
+   Fixed top bar, positioned to the right of the sidebar.
+   Height: 56px. Dark background with subtle bottom border.
+   ========================================================= */
+.nxtb {
+    height: 56px;
+    background: linear-gradient(180deg, #0c1120 0%, #0a0e1a 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Module name and breadcrumb navigation.
+   ========================================================= */
+.nxtb-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Module name - bold, white */
+.nxtb-module {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Breadcrumb separator */
+.nxtb-sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.15);
+}
+
+/* Page name / breadcrumb text */
+.nxtb-page {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   RIGHT SECTION
+   User info, notifications, and controls.
+   ========================================================= */
+.nxtb-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Icon buttons (notifications, settings, etc.) */
+.nxtb-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nxtb-icon-btn:hover {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Notification dot on icon buttons */
+.nxtb-icon-btn .nxtb-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #059669;
+    box-shadow: 0 0 6px rgba(5,150,105,0.5);
+}
+
+/* User avatar */
+.nxtb-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #059669, #2563eb);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   MOBILE MENU TOGGLE
+   Hamburger button visible only on small screens.
+   Opens the sidebar overlay.
+   ========================================================= */
+.nxtb-mobile-toggle {
+    display: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .nxtb-mobile-toggle { display: flex; }
+}

@@ -1,0 +1,139 @@
+/*
+ * ============================================================
+ * NexCore System Master Action Bar
+ * ============================================================
+ *
+ * Component:     system_actionbar
+ * Version:       1.0
+ * Location:      /public/nexcore/system_actionbar/css/system_master_actionbar.css
+ *
+ * Single row bar below the title bar. Contains action buttons
+ * (Add New, Export, etc.), search input, and filter controls.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+/* =========================================================
+   ACTION BAR CONTAINER
+   Single row, space-between layout. Subtle background
+   with top/bottom borders.
+   ========================================================= */
+.nxab {
+    height: 50px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    gap: 16px;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Action buttons (Add New, Import, Export, etc.)
+   ========================================================= */
+.nxab-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Action button base style */
+.nxab-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.nxab-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* Primary action button (e.g. Add New) - green accent */
+.nxab-btn-primary {
+    background: rgba(5,150,105,0.15);
+    border-color: rgba(5,150,105,0.3);
+    color: #34d399;
+}
+
+.nxab-btn-primary:hover {
+    background: rgba(5,150,105,0.25);
+    border-color: rgba(5,150,105,0.5);
+    color: #6ee7b7;
+    box-shadow: 0 0 12px rgba(5,150,105,0.2);
+}
+
+/* =========================================================
+   RIGHT SECTION
+   Search input and filter controls.
+   ========================================================= */
+.nxab-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Search input */
+.nxab-search {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 14px 7px 34px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    width: 220px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.nxab-search::placeholder {
+    color: rgba(255,255,255,0.25);
+}
+
+.nxab-search:focus {
+    outline: none;
+    border-color: rgba(5,150,105,0.4);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 12px rgba(5,150,105,0.1);
+}
+
+/* Search icon wrapper (positioned inside the input) */
+.nxab-search-wrap {
+    position: relative;
+}
+
+.nxab-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .nxab { flex-wrap: wrap; height: auto; padding: 10px 16px; }
+    .nxab-search { width: 100%; }
+}

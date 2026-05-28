@@ -1,0 +1,93 @@
+/*
+ * ============================================================
+ * NexCore System Master Footer
+ * ============================================================
+ *
+ * Component:     system_footer
+ * Version:       1.0
+ * Location:      /public/nexcore/system_footer/css/system_master_footer.css
+ *
+ * Sticky footer bar locked to the bottom of the page.
+ * Shows copyright, version info, and optional status indicators.
+ * The 4-colour gradient line sits at the very bottom.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+/* =========================================================
+   FOOTER CONTAINER
+   Fixed at the bottom. Flex row layout with space-between.
+   ========================================================= */
+.nxft {
+    height: 36px;
+    background: linear-gradient(180deg, #0a0e1a 0%, #080b14 100%);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Copyright text.
+   ========================================================= */
+.nxft-left {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   RIGHT SECTION
+   Version / status info.
+   ========================================================= */
+.nxft-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Individual status indicator */
+.nxft-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+}
+
+/* Status dot (green = online) */
+.nxft-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #059669;
+    box-shadow: 0 0 6px rgba(5,150,105,0.4);
+}
+
+/* Version text */
+.nxft-version {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   FOUR-COLOUR GRADIENT LINE
+   Sits at the very bottom edge of the footer.
+   Matches the NexCore brand gradient.
+   ========================================================= */
+.nxft-gradient-line {
+    height: 2px;
+    background: linear-gradient(90deg, #059669, #2563eb, #d97706, #7c3aed);
+    flex-shrink: 0;
+}

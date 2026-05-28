@@ -1,0 +1,106 @@
+/*
+ * ============================================================
+ * NexCore System Master Header Section
+ * ============================================================
+ *
+ * Component:     system_header
+ * Version:       1.0
+ * Location:      /public/nexcore/system_header/css/system_master_header.css
+ *
+ * The header section sits below the action bar. It displays
+ * the page title, description, and optional summary stats.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+/* =========================================================
+   HEADER CONTAINER
+   Full width section with padding. Bottom border separator.
+   ========================================================= */
+.nxhd {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =========================================================
+   HEADER CONTENT ROW
+   Title/description on the left, stats on the right.
+   ========================================================= */
+.nxhd-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* =========================================================
+   TITLE AND DESCRIPTION
+   ========================================================= */
+.nxhd-info {
+    flex: 1;
+}
+
+/* Page title - large, bold */
+.nxhd-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+}
+
+/* Page description - muted, smaller */
+.nxhd-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+/* =========================================================
+   HEADER STATS
+   Small stat blocks on the right side of the header.
+   ========================================================= */
+.nxhd-stats {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+/* Individual stat block */
+.nxhd-stat {
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    min-width: 80px;
+}
+
+/* Stat number - large, coloured */
+.nxhd-stat-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #059669;
+    letter-spacing: -0.5px;
+}
+
+/* Stat label - tiny, muted */
+.nxhd-stat-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .nxhd-row { flex-direction: column; }
+    .nxhd-stats { width: 100%; justify-content: flex-start; }
+}

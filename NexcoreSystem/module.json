@@ -1,0 +1,16 @@
+{
+    "name": "NexcoreSystem",
+    "alias": "nexcore_system",
+    "description": "NexCore System - Core system components, master pages, shared layouts, and NxAlert message system. Fully self-contained module.",
+    "author": "NexCore Africa Proprietary Limited",
+    "url": "https://www.nexcore.africa",
+    "version": "2.0",
+    "keywords": ["nexcore", "system", "master", "layout", "messages", "nxalert"],
+    "priority": 0,
+    "providers": [
+        "Modules\\NexcoreSystem\\Providers\\SystemServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

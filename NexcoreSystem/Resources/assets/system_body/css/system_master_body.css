@@ -1,0 +1,101 @@
+/*
+ * ============================================================
+ * NexCore System Master Centre Body
+ * ============================================================
+ *
+ * Component:     system_body
+ * Version:       1.0
+ * Location:      /public/nexcore/system_body/css/system_master_body.css
+ *
+ * The main content area. This is where tables, forms, cards,
+ * dashboards, and all primary content is displayed.
+ * Grows to fill available vertical space.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+/* =========================================================
+   BODY CONTAINER
+   Flexible, scrollable content area. Fills remaining
+   vertical space between header and footer.
+   ========================================================= */
+.nxbd {
+    flex: 1;
+    padding: 24px;
+    font-family: 'Montserrat', sans-serif;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   BODY CONTENT WRAPPER
+   Optional max-width constraint for readability.
+   Remove or adjust per module needs.
+   ========================================================= */
+.nxbd-inner {
+    width: 100%;
+}
+
+/* =========================================================
+   EMPTY STATE / COMING SOON
+   Centred message shown when a section has no content yet.
+   ========================================================= */
+.nxbd-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    text-align: center;
+    min-height: 300px;
+}
+
+/* Large icon container */
+.nxbd-empty-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(5,150,105,0.12), rgba(37,99,235,0.12));
+    border: 1px solid rgba(5,150,105,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.nxbd-empty-icon i {
+    font-size: 40px;
+    background: linear-gradient(135deg, #059669, #2563eb, #d97706, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Empty state title */
+.nxbd-empty-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+}
+
+/* Empty state description */
+.nxbd-empty-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* 4-colour gradient line */
+.nxbd-gradient-line {
+    width: 160px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #059669, #2563eb, #d97706, #7c3aed);
+    margin: 32px auto 0;
+}
