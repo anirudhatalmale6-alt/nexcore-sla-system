@@ -1,0 +1,11 @@
+{
+    "name": "NexcoreAddress",
+    "alias": "nexcore_address",
+    "description": "NexCore Address Management Module - Shared address registry with polymorphic linking",
+    "priority": 0,
+    "providers": [
+        "Modules\\NexcoreAddress\\Providers\\AddressServiceProvider",
+        "Modules\\NexcoreAddress\\Providers\\RouteServiceProvider"
+    ],
+    "files": []
+}
