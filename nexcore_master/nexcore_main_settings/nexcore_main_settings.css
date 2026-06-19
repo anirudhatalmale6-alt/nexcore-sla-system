@@ -1,0 +1,2534 @@
+/* =============================================================================
+   NEXCORE MAIN SETTINGS CSS
+   =============================================================================
+   Single source of truth for all system-wide component settings.
+   Location: /public/nexcore/master/nexcore_main_settings/nexcore_main_settings.css
+
+   This file contains the master component classes referenced by code:
+     B1-B28   : button_master_* classes
+     D1-D9    : date_master_* classes
+     T1-T3    : toggle_master_switch_* classes
+     BC1-BC3  : breadcrumb/breadcrumb_white/breadcrumb_master classes
+     C1-C3    : card container classes
+
+   TABLE OF CONTENTS:
+   1. BREADCRUMB         - Page header / breadcrumb bar styles
+   1b. BREADCRUMB WHITE  - White variant page header with teal accent
+   1c. BREADCRUMB MASTER - Unified breadcrumb with header + controls + action buttons
+   2. CARDS              - Card container styles (header, body, section cards)
+   3. BUTTONS            - Individual button styles (B1-B28)
+   4. SMART TOGGLE       - Toggle switch component (sd, oo, ai variants)
+   5. DATE MASTER        - Date display formats, date picker, date range, date badge
+   6. EXCEL MASTER       - Excel export component styling & demo card
+
+   NexCore Africa Proprietary Limited
+   www.nexcore.africa
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. BREADCRUMB
+   =============================================================================
+   The teal gradient page header bar used on every page.
+   Contains: page icon, page title, subtitle, breadcrumb trail, action buttons.
+   Component: <x-primary-breadcrumb>
+   ============================================================================= */
+
+/* Main breadcrumb container */
+.smartdash-page-header {
+    background: linear-gradient(to right, #0d3d56 0%, #1496bb 100%);
+    border-radius: 12px;
+    padding: 20px 28px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.25);
+}
+
+/* Page title area (icon + title text) */
+.smartdash-page-header .page-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Page icon (square with rounded corners) */
+.smartdash-page-header .page-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Page title heading */
+.smartdash-page-header .page-title h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+/* Page subtitle text */
+.smartdash-page-header .page-title p {
+    font-size: 13px;
+    margin: 4px 0 0 0;
+    opacity: 0.9;
+}
+
+/* Breadcrumb trail (e.g. CIMS / System Settings) */
+.smartdash-page-header .page-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transform: translateX(-5rem);
+}
+
+/* Breadcrumb links */
+.smartdash-page-header .page-breadcrumb a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* Breadcrumb links hover */
+.smartdash-page-header .page-breadcrumb a:hover {
+    color: #fff;
+}
+
+/* Breadcrumb separator (/) */
+.smartdash-page-header .page-breadcrumb .separator {
+    opacity: 0.5;
+}
+
+/* Breadcrumb current page (bold white) */
+.smartdash-page-header .page-breadcrumb .current {
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Action buttons area (right side of breadcrumb) */
+.smartdash-page-header .page-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Action button base style (transparent) */
+.smartdash-page-header .btn-page-action {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* Action button hover */
+.smartdash-page-header .btn-page-action:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* Primary action button (white background) */
+.smartdash-page-header .btn-page-primary {
+    background: #fff;
+    color: #17A2B8;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Primary action button hover */
+.smartdash-page-header .btn-page-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    color: #0d3d56;
+}
+
+/* Breadcrumb responsive - tablet and below */
+@media (max-width: 992px) {
+    .smartdash-page-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .smartdash-page-header .page-title {
+        flex-direction: column;
+    }
+    .smartdash-page-header .page-title h1 {
+        font-size: 22px;
+    }
+    .smartdash-page-header .page-breadcrumb {
+        transform: none;
+    }
+}
+
+
+/* =============================================================================
+   1b. BREADCRUMB WHITE
+   =============================================================================
+   White variant of the page header breadcrumb.
+   Clean white background with teal left accent border.
+   Title + subtitle on the left, bold heading badge on the right.
+   Class: .breadcrumb_white
+   ============================================================================= */
+
+/* Main white breadcrumb container */
+.breadcrumb_white {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fafb 100%);
+    padding: 22px 28px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #009688;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* White breadcrumb hover — subtle lift */
+.breadcrumb_white:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+/* Title area (left side) */
+.breadcrumb_white .bw_title_area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Optional icon on the left */
+.breadcrumb_white .bw_icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 150, 136, 0.3);
+    flex-shrink: 0;
+}
+
+/* Title text */
+.breadcrumb_white .bw_title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d3d56;
+    margin: 0;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+}
+
+/* Subtitle text */
+.breadcrumb_white .bw_subtitle {
+    font-size: 13px;
+    color: #888;
+    margin: 3px 0 0 0;
+    font-weight: 400;
+}
+
+/* Badge / heading area (right side) */
+.breadcrumb_white .bw_badge {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0d3d56;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* Action buttons area (right side, optional) */
+.breadcrumb_white .bw_actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Responsive - tablet and below */
+@media (max-width: 992px) {
+    .breadcrumb_white {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px 20px;
+    }
+    .breadcrumb_white .bw_title_area {
+        flex-direction: column;
+    }
+    .breadcrumb_white .bw_title {
+        font-size: 18px;
+    }
+    .breadcrumb_white .bw_badge {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+
+/* =============================================================================
+   1c. BREADCRUMB MASTER
+   =============================================================================
+   Unified breadcrumb component — single card with 3 rows:
+     Row 1 (bm_header)   : Icon + Title + Subtitle | Badge
+     Row 2 (bm_controls) : Date Picker | Toggle | Generate button
+     Row 3 (bm_actions)  : Excel, PDF, Email, Print, Close buttons
+
+   Class: .breadcrumb_master
+   Show/hide rows: add .bm_hide to any row to hide it
+   Show/hide items: add .bm_hide to any individual element to hide it
+
+   USAGE:
+   <div class="breadcrumb_master">
+       <div class="bm_header">
+           <div class="bm_title_area">
+               <div class="bm_icon"><i class="..."></i></div>
+               <div>
+                   <div class="bm_title">Page Title</div>
+                   <div class="bm_subtitle">Page subtitle</div>
+               </div>
+           </div>
+           <div class="bm_badge">BADGE TEXT</div>
+       </div>
+       <div class="bm_controls">
+           <div class="bm_control_left">...date picker...</div>
+           <div class="bm_control_center">...toggle...</div>
+           <div class="bm_control_right">...generate button...</div>
+       </div>
+       <div class="bm_actions">
+           <button class="button_master_excel">Excel</button>
+           ...
+       </div>
+   </div>
+   ============================================================================= */
+
+/* --- Main container --- */
+.breadcrumb_master {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fafb 100%);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #009688;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+.breadcrumb_master:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+}
+
+/* --- Hide utility --- */
+.breadcrumb_master .bm_hide {
+    display: none !important;
+}
+
+/* =========================
+   ROW 1: HEADER
+   ========================= */
+.bm_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 22px 28px 18px 28px;
+}
+
+/* Title area (left) */
+.bm_header .bm_title_area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Icon */
+.bm_header .bm_icon {
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0, 150, 136, 0.3);
+    flex-shrink: 0;
+}
+
+/* Title */
+.bm_header .bm_title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d3d56;
+    margin: 0;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+}
+
+/* Subtitle */
+.bm_header .bm_subtitle {
+    font-size: 13px;
+    color: #888;
+    margin: 3px 0 0 0;
+    font-weight: 400;
+}
+
+/* Badge (right) */
+.bm_header .bm_badge {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0d3d56;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+/* =========================
+   ROW 2: CONTROLS
+   ========================= */
+.bm_controls {
+    display: flex;
+    align-items: center;
+    padding: 16px 28px;
+    border-top: 1px solid rgba(0, 150, 136, 0.1);
+}
+
+/* Control slots: left, center, right */
+.bm_control_left {
+    flex: 0 0 auto;
+}
+.bm_control_center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.bm_control_right {
+    flex: 0 0 auto;
+}
+
+/* =========================
+   ROW 3: ACTION BUTTONS
+   ========================= */
+.bm_actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 28px 20px 28px;
+    border-top: 1px solid rgba(0, 150, 136, 0.1);
+    flex-wrap: wrap;
+}
+
+/* =========================
+   ROW: PILLS / QUICK SELECT
+   ========================= */
+.bm_pills {
+    display: flex;
+    align-items: flex-start;
+    padding: 14px 28px;
+    border-top: 1px solid rgba(0, 150, 136, 0.1);
+}
+.bm_pills_label {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #009688;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-right: 16px;
+    white-space: nowrap;
+    padding-top: 7px;
+    flex-shrink: 0;
+}
+.bm_pills_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.bm_pills_row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.bm_pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(0, 150, 136, 0.2);
+    background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%);
+    color: #00796B;
+    transition: all 0.25s ease;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+.bm_pill:hover {
+    background: linear-gradient(135deg, #B2DFDB 0%, #80CBC4 100%);
+    color: #004D40;
+    border-color: rgba(0, 150, 136, 0.4);
+    box-shadow: 0 3px 10px rgba(0, 150, 136, 0.2);
+    transform: translateY(-1px);
+}
+.bm_pill.active {
+    background: linear-gradient(135deg, #009688 0%, #00796B 100%);
+    color: #fff;
+    border-color: #009688;
+    box-shadow: 0 3px 12px rgba(0, 150, 136, 0.35);
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .bm_header {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px 20px 14px 20px;
+    }
+    .bm_header .bm_title_area {
+        flex-direction: column;
+    }
+    .bm_header .bm_title {
+        font-size: 18px;
+    }
+    .bm_header .bm_badge {
+        font-size: 20px;
+        text-align: center;
+    }
+    .bm_controls {
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px 20px;
+    }
+    .bm_control_center {
+        justify-content: center;
+    }
+    .bm_actions {
+        padding: 12px 20px 16px 20px;
+    }
+    .bm_pills {
+        flex-direction: column;
+        padding: 12px 20px;
+    }
+    .bm_pills_label {
+        margin-bottom: 8px;
+    }
+}
+
+@media print {
+    .bm_controls,
+    .bm_actions,
+    .bm_pills {
+        display: none !important;
+    }
+}
+
+
+/* =============================================================================
+   2. CARDS
+   =============================================================================
+   Card container styles used throughout the system.
+   Standard Bootstrap .card is used as base, these are CIMS-specific additions.
+   ============================================================================= */
+
+/* Section card - used for grouped content sections */
+.section-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,75,135,0.18);
+    margin-bottom: 20px;
+}
+
+/* Section card hover effect */
+.section-card:hover {
+    box-shadow: 0 8px 20px rgba(0,75,135,0.28);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+/* Card border - thin border around the entire card */
+.card {
+    border: 1px solid #17A2B8 !important;
+}
+
+/* Card header with teal gradient (standard for CIMS) */
+.card-header.sd_background_pink {
+    background: linear-gradient(to right, #0d3d56 0%, #1496bb 100%) !important;
+}
+
+/* Card header title styling */
+.card-header h4 {
+    font-weight: 700;
+}
+
+
+/* =============================================================================
+   3. BUTTONS
+   =============================================================================
+   Master button library for the entire CIMS system.
+   Naming convention: button_master_{name}
+
+   All buttons share: pill shape, gradient, shadow, hover lift, icon animation,
+   click press effect, and smooth transitions.
+
+   COLOUR FAMILIES:
+   - Pink       : Close, Generic Pink
+   - Blue       : Save, Update, Submit, Next
+   - Amber      : Edit, Warning
+   - Red        : Delete, Reject
+   - Dark Red   : Cancel
+   - Green      : Add, Approve
+   - Teal       : Download, Refresh, View
+   - Purple     : Email, Notify
+   - Dark       : Print, Archive
+   - Grey       : Back, Previous, Reset
+
+   BUTTON INDEX:
+   1.  button_master_close      - Close / Go back         (Pink)
+   2.  button_master_save       - Save new record          (Blue)
+   3.  button_master_update     - Update existing record   (Blue)
+   4.  button_master_edit       - Enter edit mode          (Amber)
+   5.  button_master_delete     - Delete record            (Red)
+   6.  button_master_cancel     - Cancel action            (Dark Red)
+   7.  button_master_print      - Print page / document    (Dark)
+   8.  button_master_download   - Download file            (Teal)
+   9.  button_master_email      - Send email               (Purple)
+   10. button_master_add        - Add new item             (Green)
+   11. button_master_approve    - Approve / Confirm        (Green)
+   12. button_master_reject     - Reject / Decline         (Red)
+   13. button_master_submit     - Submit form              (Blue)
+   14. button_master_search     - Search / Find            (Sky Blue)
+   15. button_master_export     - Export data              (Emerald)
+   16. button_master_import     - Import data              (Indigo)
+   17. button_master_back       - Go back / Previous       (Slate)
+   18. button_master_next       - Go forward / Next        (Blue)
+   19. button_master_refresh    - Refresh / Reload         (Teal)
+   20. button_master_view       - View / Preview           (Cyan)
+   21. button_master_archive    - Archive item             (Charcoal)
+   22. button_master_reset      - Reset / Clear            (Grey)
+   23. button_master_warning    - Warning action           (Amber)
+   24. button_master_notify     - Send notification        (Purple)
+   25. button_master_yes        - Yes / Confirm            (Green)
+   26. button_master_no         - No / Decline             (Red)
+   27. button_master_ok         - OK / Acknowledge         (Green)
+   28. button_master_close_blue - Close / Dismiss (Blue)
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   BASE BUTTON STYLE (shared by all button_master buttons)
+   ----------------------------------------------------------------------------- */
+[class*="button_master_"] {
+    padding: 8px 30px !important;
+    font-size: 18px !important;
+    margin: 10px 10px !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+/* Base hover - lift up */
+[class*="button_master_"]:hover {
+    transform: translateY(-3px);
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+/* Base icon animation - nudge on hover */
+[class*="button_master_"] i {
+    transition: transform 0.3s ease;
+}
+[class*="button_master_"]:hover i {
+    transform: translateX(-4px);
+}
+
+/* Base active/click - press down */
+[class*="button_master_"]:active {
+    transform: translateY(-1px);
+}
+
+
+/* -----------------------------------------------------------------------------
+   1. CLOSE BUTTON (Pink)
+   Usage: <a class="button_master_close"><i class="fa-solid fa-circle-left"></i> Close</a>
+   ----------------------------------------------------------------------------- */
+.button_master_close,
+.cims-close-button {
+    background: linear-gradient(to right, #9B0054 0%, #CD006E 100%) !important;
+    box-shadow: 0 4px 15px rgba(205, 0, 110, 0.35);
+}
+.button_master_close:hover,
+.cims-close-button:hover {
+    background: linear-gradient(to right, #B30060 0%, #E0007A 100%) !important;
+    box-shadow: 0 8px 25px rgba(205, 0, 110, 0.5);
+}
+.button_master_close:active,
+.cims-close-button:active {
+    box-shadow: 0 4px 12px rgba(205, 0, 110, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. SAVE BUTTON (Blue)
+   Usage: <button class="button_master_save"><i class="fa fa-save"></i> Save</button>
+   ----------------------------------------------------------------------------- */
+.button_master_save,
+.cims-save-button {
+    background: linear-gradient(to right, #0747A6 0%, #0D6EFD 100%) !important;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.35);
+}
+.button_master_save:hover,
+.cims-save-button:hover {
+    background: linear-gradient(to right, #0854BF 0%, #3D8BFD 100%) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+}
+.button_master_save:active,
+.cims-save-button:active {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. UPDATE BUTTON (Blue)
+   Usage: <button class="button_master_update"><i class="fa fa-save"></i> Update</button>
+   ----------------------------------------------------------------------------- */
+.button_master_update,
+.cims-update-button {
+    background: linear-gradient(to right, #0747A6 0%, #0D6EFD 100%) !important;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.35);
+}
+.button_master_update:hover,
+.cims-update-button:hover {
+    background: linear-gradient(to right, #0854BF 0%, #3D8BFD 100%) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+}
+.button_master_update:active,
+.cims-update-button:active {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. EDIT BUTTON (Amber)
+   Usage: <a class="button_master_edit"><i class="fa fa-edit"></i> Edit</a>
+   ----------------------------------------------------------------------------- */
+.button_master_edit,
+.cims-edit-button {
+    background: linear-gradient(to right, #CC7A00 0%, #FFA940 100%) !important;
+    box-shadow: 0 4px 15px rgba(255, 169, 64, 0.35);
+}
+.button_master_edit:hover,
+.cims-edit-button:hover {
+    background: linear-gradient(to right, #E08800 0%, #FFB94D 100%) !important;
+    box-shadow: 0 8px 25px rgba(255, 169, 64, 0.5);
+}
+.button_master_edit:active,
+.cims-edit-button:active {
+    box-shadow: 0 4px 12px rgba(255, 169, 64, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. DELETE BUTTON (Red)
+   Usage: <button class="button_master_delete"><i class="fa fa-trash"></i> Delete</button>
+   ----------------------------------------------------------------------------- */
+.button_master_delete,
+.cims-delete-button {
+    background: linear-gradient(to right, #8B0000 0%, #DC3545 100%) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35);
+}
+.button_master_delete:hover,
+.cims-delete-button:hover {
+    background: linear-gradient(to right, #A00000 0%, #E8525F 100%) !important;
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5);
+}
+.button_master_delete:active,
+.cims-delete-button:active {
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. CANCEL BUTTON (Dark Red)
+   Usage: <button class="button_master_cancel"><i class="fa fa-times"></i> Cancel</button>
+   ----------------------------------------------------------------------------- */
+.button_master_cancel,
+.cims-cancel-button {
+    background: linear-gradient(to right, #6B2D3E 0%, #C0392B 100%) !important;
+    box-shadow: 0 4px 15px rgba(192, 57, 43, 0.35);
+}
+.button_master_cancel:hover,
+.cims-cancel-button:hover {
+    background: linear-gradient(to right, #7D3448 0%, #D44637 100%) !important;
+    box-shadow: 0 8px 25px rgba(192, 57, 43, 0.5);
+}
+.button_master_cancel:active,
+.cims-cancel-button:active {
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   7. PRINT BUTTON (Dark / Charcoal)
+   Usage: <button class="button_master_print"><i class="fa fa-print"></i> Print</button>
+   ----------------------------------------------------------------------------- */
+.button_master_print,
+.cims-print-button {
+    background: linear-gradient(to right, #1A1A2E 0%, #343A40 100%) !important;
+    box-shadow: 0 4px 15px rgba(52, 58, 64, 0.35);
+}
+.button_master_print:hover,
+.cims-print-button:hover {
+    background: linear-gradient(to right, #252542 0%, #495057 100%) !important;
+    box-shadow: 0 8px 25px rgba(52, 58, 64, 0.5);
+}
+.button_master_print:active,
+.cims-print-button:active {
+    box-shadow: 0 4px 12px rgba(52, 58, 64, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   8. DOWNLOAD BUTTON (Teal)
+   Usage: <a class="button_master_download"><i class="fa fa-download"></i> Download</a>
+   ----------------------------------------------------------------------------- */
+.button_master_download,
+.cims-download-button {
+    background: linear-gradient(to right, #0d3d56 0%, #17A2B8 100%) !important;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.35);
+}
+.button_master_download:hover,
+.cims-download-button:hover {
+    background: linear-gradient(to right, #104A68 0%, #1FC8E3 100%) !important;
+    box-shadow: 0 8px 25px rgba(23, 162, 184, 0.5);
+}
+.button_master_download:active,
+.cims-download-button:active {
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   9. EMAIL BUTTON (Purple)
+   Usage: <a class="button_master_email"><i class="fa fa-envelope"></i> Email</a>
+   ----------------------------------------------------------------------------- */
+.button_master_email,
+.cims-email-button {
+    background: linear-gradient(to right, #4A148C 0%, #7B1FA2 100%) !important;
+    box-shadow: 0 4px 15px rgba(123, 31, 162, 0.35);
+}
+.button_master_email:hover,
+.cims-email-button:hover {
+    background: linear-gradient(to right, #5C1BA3 0%, #9C27B0 100%) !important;
+    box-shadow: 0 8px 25px rgba(123, 31, 162, 0.5);
+}
+.button_master_email:active,
+.cims-email-button:active {
+    box-shadow: 0 4px 12px rgba(123, 31, 162, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   10. ADD BUTTON (Green)
+   Usage: <button class="button_master_add"><i class="fa fa-plus"></i> Add</button>
+   ----------------------------------------------------------------------------- */
+.button_master_add {
+    background: linear-gradient(to right, #1B5E20 0%, #28A745 100%) !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35);
+}
+.button_master_add:hover {
+    background: linear-gradient(to right, #237A29 0%, #34C759 100%) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+.button_master_add:active {
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   11. APPROVE BUTTON (Green)
+   Usage: <button class="button_master_approve"><i class="fa fa-check"></i> Approve</button>
+   ----------------------------------------------------------------------------- */
+.button_master_approve {
+    background: linear-gradient(to right, #1B5E20 0%, #28A745 100%) !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35);
+}
+.button_master_approve:hover {
+    background: linear-gradient(to right, #237A29 0%, #34C759 100%) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+.button_master_approve:active {
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   12. REJECT BUTTON (Red)
+   Usage: <button class="button_master_reject"><i class="fa fa-ban"></i> Reject</button>
+   ----------------------------------------------------------------------------- */
+.button_master_reject {
+    background: linear-gradient(to right, #8B0000 0%, #DC3545 100%) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35);
+}
+.button_master_reject:hover {
+    background: linear-gradient(to right, #A00000 0%, #E8525F 100%) !important;
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5);
+}
+.button_master_reject:active {
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   13. SUBMIT BUTTON (Royal Blue)
+   Usage: <button class="button_master_submit"><i class="fa fa-paper-plane"></i> Submit</button>
+   ----------------------------------------------------------------------------- */
+.button_master_submit {
+    background: linear-gradient(to right, #0747A6 0%, #0D6EFD 100%) !important;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.35);
+}
+.button_master_submit:hover {
+    background: linear-gradient(to right, #0854BF 0%, #3D8BFD 100%) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+}
+.button_master_submit:active {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   14. SEARCH BUTTON (Sky Blue)
+   Usage: <button class="button_master_search"><i class="fa fa-search"></i> Search</button>
+   ----------------------------------------------------------------------------- */
+.button_master_search {
+    background: linear-gradient(to right, #1565C0 0%, #2196F3 100%) !important;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.35);
+}
+.button_master_search:hover {
+    background: linear-gradient(to right, #1976D2 0%, #42A5F5 100%) !important;
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.5);
+}
+.button_master_search:active {
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   15. EXPORT BUTTON (Emerald)
+   Usage: <button class="button_master_export"><i class="fa fa-file-export"></i> Export</button>
+   ----------------------------------------------------------------------------- */
+.button_master_export {
+    background: linear-gradient(to right, #2E7D32 0%, #4CAF50 100%) !important;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.35);
+}
+.button_master_export:hover {
+    background: linear-gradient(to right, #388E3C 0%, #66BB6A 100%) !important;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+}
+.button_master_export:active {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   16. IMPORT BUTTON (Indigo)
+   Usage: <button class="button_master_import"><i class="fa fa-file-import"></i> Import</button>
+   ----------------------------------------------------------------------------- */
+.button_master_import {
+    background: linear-gradient(to right, #283593 0%, #3F51B5 100%) !important;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.35);
+}
+.button_master_import:hover {
+    background: linear-gradient(to right, #303F9F 0%, #5C6BC0 100%) !important;
+    box-shadow: 0 8px 25px rgba(63, 81, 181, 0.5);
+}
+.button_master_import:active {
+    box-shadow: 0 4px 12px rgba(63, 81, 181, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   17. BACK BUTTON (Slate)
+   Usage: <a class="button_master_back"><i class="fa fa-arrow-left"></i> Back</a>
+   ----------------------------------------------------------------------------- */
+.button_master_back {
+    background: linear-gradient(to right, #37474F 0%, #546E7A 100%) !important;
+    box-shadow: 0 4px 15px rgba(84, 110, 122, 0.35);
+}
+.button_master_back:hover {
+    background: linear-gradient(to right, #455A64 0%, #607D8B 100%) !important;
+    box-shadow: 0 8px 25px rgba(84, 110, 122, 0.5);
+}
+.button_master_back:active {
+    box-shadow: 0 4px 12px rgba(84, 110, 122, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   18. NEXT BUTTON (Blue)
+   Usage: <button class="button_master_next"><i class="fa fa-arrow-right"></i> Next</button>
+   ----------------------------------------------------------------------------- */
+.button_master_next {
+    background: linear-gradient(to right, #0747A6 0%, #1976D2 100%) !important;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.35);
+}
+.button_master_next:hover {
+    background: linear-gradient(to right, #0854BF 0%, #2196F3 100%) !important;
+    box-shadow: 0 8px 25px rgba(25, 118, 210, 0.5);
+}
+.button_master_next:active {
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+/* Next button icon nudges right instead of left */
+.button_master_next:hover i {
+    transform: translateX(4px);
+}
+
+
+/* -----------------------------------------------------------------------------
+   19. REFRESH BUTTON (Teal)
+   Usage: <button class="button_master_refresh"><i class="fa fa-sync"></i> Refresh</button>
+   ----------------------------------------------------------------------------- */
+.button_master_refresh {
+    background: linear-gradient(to right, #0d3d56 0%, #17A2B8 100%) !important;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.35);
+}
+.button_master_refresh:hover {
+    background: linear-gradient(to right, #104A68 0%, #1FC8E3 100%) !important;
+    box-shadow: 0 8px 25px rgba(23, 162, 184, 0.5);
+}
+.button_master_refresh:active {
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
+}
+/* Refresh button icon spins on hover */
+.button_master_refresh:hover i {
+    transform: rotate(180deg);
+}
+
+
+/* -----------------------------------------------------------------------------
+   20. VIEW BUTTON (Cyan)
+   Usage: <a class="button_master_view"><i class="fa fa-eye"></i> View</a>
+   ----------------------------------------------------------------------------- */
+.button_master_view {
+    background: linear-gradient(to right, #006064 0%, #00BCD4 100%) !important;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.35);
+}
+.button_master_view:hover {
+    background: linear-gradient(to right, #00838F 0%, #26C6DA 100%) !important;
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
+}
+.button_master_view:active {
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   21. ARCHIVE BUTTON (Charcoal)
+   Usage: <button class="button_master_archive"><i class="fa fa-box-archive"></i> Archive</button>
+   ----------------------------------------------------------------------------- */
+.button_master_archive {
+    background: linear-gradient(to right, #263238 0%, #455A64 100%) !important;
+    box-shadow: 0 4px 15px rgba(69, 90, 100, 0.35);
+}
+.button_master_archive:hover {
+    background: linear-gradient(to right, #37474F 0%, #546E7A 100%) !important;
+    box-shadow: 0 8px 25px rgba(69, 90, 100, 0.5);
+}
+.button_master_archive:active {
+    box-shadow: 0 4px 12px rgba(69, 90, 100, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   22. RESET BUTTON (Grey)
+   Usage: <button class="button_master_reset"><i class="fa fa-undo"></i> Reset</button>
+   ----------------------------------------------------------------------------- */
+.button_master_reset {
+    background: linear-gradient(to right, #455A64 0%, #78909C 100%) !important;
+    box-shadow: 0 4px 15px rgba(120, 144, 156, 0.35);
+}
+.button_master_reset:hover {
+    background: linear-gradient(to right, #546E7A 0%, #90A4AE 100%) !important;
+    box-shadow: 0 8px 25px rgba(120, 144, 156, 0.5);
+}
+.button_master_reset:active {
+    box-shadow: 0 4px 12px rgba(120, 144, 156, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   23. WARNING BUTTON (Amber)
+   Usage: <button class="button_master_warning"><i class="fa fa-exclamation-triangle"></i> Warning</button>
+   ----------------------------------------------------------------------------- */
+.button_master_warning {
+    background: linear-gradient(to right, #CC7A00 0%, #FFA940 100%) !important;
+    box-shadow: 0 4px 15px rgba(255, 169, 64, 0.35);
+}
+.button_master_warning:hover {
+    background: linear-gradient(to right, #E08800 0%, #FFB94D 100%) !important;
+    box-shadow: 0 8px 25px rgba(255, 169, 64, 0.5);
+}
+.button_master_warning:active {
+    box-shadow: 0 4px 12px rgba(255, 169, 64, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   24. NOTIFY BUTTON (Purple)
+   Usage: <button class="button_master_notify"><i class="fa fa-bell"></i> Notify</button>
+   ----------------------------------------------------------------------------- */
+.button_master_notify {
+    background: linear-gradient(to right, #4A148C 0%, #7B1FA2 100%) !important;
+    box-shadow: 0 4px 15px rgba(123, 31, 162, 0.35);
+}
+.button_master_notify:hover {
+    background: linear-gradient(to right, #5C1BA3 0%, #9C27B0 100%) !important;
+    box-shadow: 0 8px 25px rgba(123, 31, 162, 0.5);
+}
+.button_master_notify:active {
+    box-shadow: 0 4px 12px rgba(123, 31, 162, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   25. YES BUTTON (Green)
+   Usage: <button class="button_master_yes"><i class="fa fa-check"></i> Yes</button>
+   ----------------------------------------------------------------------------- */
+.button_master_yes {
+    background: linear-gradient(to right, #1B5E20 0%, #28A745 100%) !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35);
+}
+.button_master_yes:hover {
+    background: linear-gradient(to right, #237A29 0%, #34C759 100%) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+.button_master_yes:active {
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   26. NO BUTTON (Red - matches Reject)
+   Usage: <button class="button_master_no"><i class="fa fa-ban"></i> No</button>
+   ----------------------------------------------------------------------------- */
+.button_master_no {
+    background: linear-gradient(to right, #8B0000 0%, #DC3545 100%) !important;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35);
+}
+.button_master_no:hover {
+    background: linear-gradient(to right, #A00000 0%, #E8525F 100%) !important;
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.5);
+}
+.button_master_no:active {
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   27. OK BUTTON (Green)
+   Usage: <button class="button_master_ok"><i class="fa fa-check"></i> OK</button>
+   ----------------------------------------------------------------------------- */
+.button_master_ok {
+    background: linear-gradient(to right, #1B5E20 0%, #28A745 100%) !important;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.35);
+}
+.button_master_ok:hover {
+    background: linear-gradient(to right, #237A29 0%, #34C759 100%) !important;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.5);
+}
+.button_master_ok:active {
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   28. CLOSE BLUE BUTTON (Blue)
+   Usage: <button class="button_master_close_blue"><i class="fa fa-times"></i> Close</button>
+   ----------------------------------------------------------------------------- */
+.button_master_close_blue {
+    background: linear-gradient(to right, #0747A6 0%, #0D6EFD 100%) !important;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.35);
+}
+.button_master_close_blue:hover {
+    background: linear-gradient(to right, #0854BF 0%, #3D8BFD 100%) !important;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.5);
+}
+.button_master_close_blue:active {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   29. COMPLIANT BADGE (Green - SARS Style)
+   Usage: <span class="button_master_compliant">Compliant</span>
+   Rounded rectangle with 3D gradient effect (lighter top, darker bottom)
+   ----------------------------------------------------------------------------- */
+.button_master_compliant {
+    display: inline-block !important;
+    background: linear-gradient(to bottom, #8BC34A 0%, #4CAF50 40%, #388E3C 100%) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 700;
+    padding: 8px 28px !important;
+    margin: 10px 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid #2E7D32 !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.2);
+    text-align: center;
+    min-width: 100px;
+    cursor: default;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Compliant badge hover */
+.button_master_compliant:hover {
+    background: linear-gradient(to bottom, #9CCC65 0%, #66BB6A 40%, #43A047 100%) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 4px 8px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   26. NON COMPLIANT BADGE (Red - SARS Style)
+   Usage: <span class="button_master_non_compliant">Non<br>Compliant</span>
+   Rounded rectangle with 3D gradient effect (lighter top, darker bottom)
+   ----------------------------------------------------------------------------- */
+.button_master_non_compliant {
+    display: inline-block !important;
+    background: linear-gradient(to bottom, #EF5350 0%, #E53935 40%, #C62828 100%) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 700;
+    padding: 8px 28px !important;
+    margin: 10px 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid #8B0000 !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.2);
+    text-align: center;
+    min-width: 100px;
+    cursor: default;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Non Compliant badge hover */
+.button_master_non_compliant:hover {
+    background: linear-gradient(to bottom, #FF7043 0%, #EF5350 40%, #D32F2F 100%) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 4px 8px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   27. COMPLIANT PILL (Green pill with tick icon)
+   Usage: <span class="badge_master_compliant_pill"><i class="fa fa-check"></i> Compliant</span>
+   ----------------------------------------------------------------------------- */
+.badge_master_compliant_pill {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    background: #28A745 !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    padding: 8px 24px !important;
+    margin: 10px 10px !important;
+    border-radius: 50px !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    cursor: default;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Compliant pill hover */
+.badge_master_compliant_pill:hover {
+    background: #34C759 !important;
+    box-shadow: 0 4px 14px rgba(40, 167, 69, 0.45);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   28. NON COMPLIANT PILL (Red pill with cross icon)
+   Usage: <span class="badge_master_non_compliant_pill"><i class="fa fa-times"></i> Non Compliant</span>
+   ----------------------------------------------------------------------------- */
+.badge_master_non_compliant_pill {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    background: #DC3545 !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 600;
+    padding: 8px 24px !important;
+    margin: 10px 10px !important;
+    border-radius: 50px !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    cursor: default;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Non Compliant pill hover */
+.badge_master_non_compliant_pill:hover {
+    background: #E8525F !important;
+    box-shadow: 0 4px 14px rgba(220, 53, 69, 0.45);
+    transform: translateY(-2px);
+    color: #fff !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   29. GENERATE BUTTON (Deep Purple)
+   Usage: <button class="button_master_generate"><i class="fa fa-cogs"></i> Generate</button>
+   ----------------------------------------------------------------------------- */
+.button_master_generate {
+    background: linear-gradient(to right, #4527A0 0%, #7C4DFF 100%) !important;
+    box-shadow: 0 4px 15px rgba(124, 77, 255, 0.35);
+}
+.button_master_generate:hover {
+    background: linear-gradient(to right, #5E35B1 0%, #B388FF 100%) !important;
+    box-shadow: 0 8px 25px rgba(124, 77, 255, 0.5);
+}
+.button_master_generate:active {
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   30. LOAD BUTTON (Indigo)
+   Usage: <button class="button_master_load"><i class="fa fa-spinner"></i> Load</button>
+   ----------------------------------------------------------------------------- */
+.button_master_load {
+    background: linear-gradient(to right, #283593 0%, #5C6BC0 100%) !important;
+    box-shadow: 0 4px 15px rgba(92, 107, 192, 0.35);
+}
+.button_master_load:hover {
+    background: linear-gradient(to right, #3949AB 0%, #7986CB 100%) !important;
+    box-shadow: 0 8px 25px rgba(92, 107, 192, 0.5);
+}
+.button_master_load:active {
+    box-shadow: 0 4px 12px rgba(92, 107, 192, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   31. EXCEL BUTTON (Excel Green)
+   Usage: <button class="button_master_excel"><i class="fa fa-file-excel"></i> Excel</button>
+   ----------------------------------------------------------------------------- */
+.button_master_excel {
+    background: linear-gradient(to right, #1B5E20 0%, #388E3C 100%) !important;
+    box-shadow: 0 4px 15px rgba(56, 142, 60, 0.35);
+}
+.button_master_excel:hover {
+    background: linear-gradient(to right, #2E7D32 0%, #4CAF50 100%) !important;
+    box-shadow: 0 8px 25px rgba(56, 142, 60, 0.5);
+}
+.button_master_excel:active {
+    box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   32. WORD BUTTON (Word Blue)
+   Usage: <button class="button_master_word"><i class="fa fa-file-word"></i> Word</button>
+   ----------------------------------------------------------------------------- */
+.button_master_word {
+    background: linear-gradient(to right, #1565C0 0%, #2196F3 100%) !important;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.35);
+}
+.button_master_word:hover {
+    background: linear-gradient(to right, #1976D2 0%, #42A5F5 100%) !important;
+    box-shadow: 0 8px 25px rgba(33, 150, 243, 0.5);
+}
+.button_master_word:active {
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   33. CSV BUTTON (Teal)
+   Usage: <button class="button_master_csv"><i class="fa fa-file-csv"></i> CSV</button>
+   ----------------------------------------------------------------------------- */
+.button_master_csv {
+    background: linear-gradient(to right, #00695C 0%, #00897B 100%) !important;
+    box-shadow: 0 4px 15px rgba(0, 137, 123, 0.35);
+}
+.button_master_csv:hover {
+    background: linear-gradient(to right, #00796B 0%, #26A69A 100%) !important;
+    box-shadow: 0 8px 25px rgba(0, 137, 123, 0.5);
+}
+.button_master_csv:active {
+    box-shadow: 0 4px 12px rgba(0, 137, 123, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   34. PDF BUTTON (PDF Red)
+   Usage: <button class="button_master_pdf"><i class="fa fa-file-pdf"></i> PDF</button>
+   ----------------------------------------------------------------------------- */
+.button_master_pdf {
+    background: linear-gradient(to right, #B71C1C 0%, #E53935 100%) !important;
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.35);
+}
+.button_master_pdf:hover {
+    background: linear-gradient(to right, #C62828 0%, #EF5350 100%) !important;
+    box-shadow: 0 8px 25px rgba(229, 57, 53, 0.5);
+}
+.button_master_pdf:active {
+    box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   35. ADDRESS BUTTON (Navy Blue)
+   Usage: <button class="button_master_address"><i class="fa fa-map-marker-alt"></i> Address</button>
+   ----------------------------------------------------------------------------- */
+.button_master_address {
+    background: linear-gradient(to right, #1A237E 0%, #3949AB 100%) !important;
+    box-shadow: 0 4px 15px rgba(57, 73, 171, 0.35);
+}
+.button_master_address:hover {
+    background: linear-gradient(to right, #283593 0%, #5C6BC0 100%) !important;
+    box-shadow: 0 8px 25px rgba(57, 73, 171, 0.5);
+}
+.button_master_address:active {
+    box-shadow: 0 4px 12px rgba(57, 73, 171, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   36. DIRECTORS BUTTON (Dark Slate)
+   Usage: <button class="button_master_directors"><i class="fa fa-user-tie"></i> Directors</button>
+   ----------------------------------------------------------------------------- */
+.button_master_directors {
+    background: linear-gradient(to right, #37474F 0%, #546E7A 100%) !important;
+    box-shadow: 0 4px 15px rgba(84, 110, 122, 0.35);
+}
+.button_master_directors:hover {
+    background: linear-gradient(to right, #455A64 0%, #78909C 100%) !important;
+    box-shadow: 0 8px 25px rgba(84, 110, 122, 0.5);
+}
+.button_master_directors:active {
+    box-shadow: 0 4px 12px rgba(84, 110, 122, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   37. PEOPLE BUTTON (Warm Blue)
+   Usage: <button class="button_master_people"><i class="fa fa-users"></i> People</button>
+   ----------------------------------------------------------------------------- */
+.button_master_people {
+    background: linear-gradient(to right, #0277BD 0%, #039BE5 100%) !important;
+    box-shadow: 0 4px 15px rgba(3, 155, 229, 0.35);
+}
+.button_master_people:hover {
+    background: linear-gradient(to right, #0288D1 0%, #29B6F6 100%) !important;
+    box-shadow: 0 8px 25px rgba(3, 155, 229, 0.5);
+}
+.button_master_people:active {
+    box-shadow: 0 4px 12px rgba(3, 155, 229, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   38. BANKS BUTTON (Money Green)
+   Usage: <button class="button_master_banks"><i class="fa fa-university"></i> Banks</button>
+   ----------------------------------------------------------------------------- */
+.button_master_banks {
+    background: linear-gradient(to right, #1B5E20 0%, #2E7D32 100%) !important;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.35);
+}
+.button_master_banks:hover {
+    background: linear-gradient(to right, #2E7D32 0%, #43A047 100%) !important;
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
+}
+.button_master_banks:active {
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   39. ACTIVE BUTTON (Vibrant Green)
+   Usage: <button class="button_master_active"><i class="fa fa-check-circle"></i> Active</button>
+   ----------------------------------------------------------------------------- */
+.button_master_active {
+    background: linear-gradient(to right, #2E7D32 0%, #4CAF50 100%) !important;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.35);
+}
+.button_master_active:hover {
+    background: linear-gradient(to right, #388E3C 0%, #66BB6A 100%) !important;
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+}
+.button_master_active:active {
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   40. INACTIVE BUTTON (Muted Grey)
+   Usage: <button class="button_master_inactive"><i class="fa fa-times-circle"></i> Inactive</button>
+   ----------------------------------------------------------------------------- */
+.button_master_inactive {
+    background: linear-gradient(to right, #616161 0%, #9E9E9E 100%) !important;
+    box-shadow: 0 4px 15px rgba(158, 158, 158, 0.35);
+}
+.button_master_inactive:hover {
+    background: linear-gradient(to right, #757575 0%, #BDBDBD 100%) !important;
+    box-shadow: 0 8px 25px rgba(158, 158, 158, 0.5);
+}
+.button_master_inactive:active {
+    box-shadow: 0 4px 12px rgba(158, 158, 158, 0.4);
+}
+
+
+/* -----------------------------------------------------------------------------
+   41. LIST ALL BUTTON (Teal)
+   Usage: <button class="button_master_list_all"><i class="fa fa-list"></i> List All</button>
+   ----------------------------------------------------------------------------- */
+.button_master_list_all {
+    background: linear-gradient(to right, #00695C 0%, #009688 100%) !important;
+    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.35);
+}
+.button_master_list_all:hover {
+    background: linear-gradient(to right, #00796B 0%, #26A69A 100%) !important;
+    box-shadow: 0 8px 25px rgba(0, 150, 136, 0.5);
+}
+.button_master_list_all:active {
+    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.4);
+}
+
+
+/* =============================================================================
+   SMART TOGGLE — MASTER COMPONENT
+   Variants:
+     toggle_master_switch_sd  — Summary / Detailed
+     toggle_master_switch_oo  — Off / On
+     toggle_master_switch_ai  — Active / Inactive
+
+   Usage:
+   <div class="toggle_master_switch_sd">
+       <span class="toggle_master_label active" data-side="left">Summary</span>
+       <label class="toggle_master_track">
+           <input type="checkbox">
+           <span class="toggle_master_knob"></span>
+       </label>
+       <span class="toggle_master_label" data-side="right">Detailed</span>
+   </div>
+
+   JS: On change, toggle .active between the two .toggle_master_label spans
+   ============================================================================= */
+
+/* Container — matches all toggle_master_switch variants */
+[class*="toggle_master_switch"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', -apple-system, sans-serif;
+}
+
+/* Labels */
+.toggle_master_label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.35s ease;
+    user-select: none;
+    letter-spacing: 0.3px;
+}
+
+.toggle_master_label.active {
+    color: #009688;
+    text-shadow: 0 0 8px rgba(0, 150, 136, 0.2);
+}
+
+/* Track (the outer pill) */
+.toggle_master_track {
+    position: relative;
+    display: inline-block;
+    width: 56px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.toggle_master_track input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* The slider track — OFF state = teal gradient */
+.toggle_master_knob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%);
+    border-radius: 30px;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 3px 10px rgba(0, 150, 136, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* The sliding circle */
+.toggle_master_knob::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 3px;
+    bottom: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover glow on knob */
+.toggle_master_track:hover .toggle_master_knob::before {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 12px rgba(0, 150, 136, 0.25);
+}
+
+/* ON state — checked: slide right + change gradient */
+.toggle_master_track input:checked + .toggle_master_knob {
+    background: linear-gradient(135deg, #00796B 0%, #004D40 100%);
+    box-shadow: 0 3px 10px rgba(0, 77, 64, 0.35), inset 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggle_master_track input:checked + .toggle_master_knob::before {
+    transform: translateX(26px);
+}
+
+/* Focus ring for accessibility */
+.toggle_master_track input:focus-visible + .toggle_master_knob {
+    outline: 3px solid rgba(0, 150, 136, 0.4);
+    outline-offset: 2px;
+}
+
+
+/* =============================================================================
+   5. DATE MASTER
+   =============================================================================
+   Standardised date display formats, date picker inputs, date range pickers,
+   and date badges for the entire CIMS system.
+
+   DISPLAY CLASSES:
+   - date_master_long       — "12 March 2026"
+   - date_master_short      — "12/03/2026"
+   - date_master_month_year — "March 2026"
+   - date_master_year       — "2026"
+   - date_master_day_month  — "12 March"
+   - date_master_day_short  — "Thu, 12 Mar"
+   - date_master_day_long   — "Thursday, 12 March 2026"
+
+   INPUT CLASSES:
+   - date_master_picker     — Styled date input with calendar icon + glow
+   - date_master_range      — From/To date pair wrapper
+
+   BADGE CLASS:
+   - date_master_badge      — Small teal pill date badge
+
+   FLATPICKR OVERRIDES:
+   - Branded calendar popup matching SmartWeigh theme
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   SHIMMER ANIMATION — reusable teal shimmer sweep for date elements
+   ----------------------------------------------------------------------------- */
+@keyframes dm_shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes dm_icon_pulse {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(0, 150, 136, 0.2)); }
+    50%      { filter: drop-shadow(0 0 8px rgba(0, 150, 136, 0.5)); }
+}
+
+@keyframes dm_border_glow {
+    0%, 100% { border-color: rgba(0, 150, 136, 0.2); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+    50%      { border-color: rgba(0, 150, 136, 0.45); box-shadow: 0 3px 15px rgba(0, 150, 136, 0.18); }
+}
+
+/* -----------------------------------------------------------------------------
+   DATE DISPLAY LABELS (read-only styled spans)
+   Shared base style for all date_master_ display classes
+   ----------------------------------------------------------------------------- */
+.date_master_long,
+.date_master_short,
+.date_master_month_year,
+.date_master_year,
+.date_master_day_month,
+.date_master_day_short,
+.date_master_day_long {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0d3d56;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fafb 50%, #e0f7fa 100%);
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 150, 136, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    animation: dm_border_glow 4s ease-in-out infinite;
+}
+
+/* Shimmer overlay on hover */
+.date_master_long::after,
+.date_master_short::after,
+.date_master_month_year::after,
+.date_master_year::after,
+.date_master_day_month::after,
+.date_master_day_short::after,
+.date_master_day_long::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 150, 136, 0.08) 50%, transparent 100%);
+    background-size: 200% 100%;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* Activate shimmer on hover */
+.date_master_long:hover::after,
+.date_master_short:hover::after,
+.date_master_month_year:hover::after,
+.date_master_year:hover::after,
+.date_master_day_month:hover::after,
+.date_master_day_short:hover::after,
+.date_master_day_long:hover::after {
+    opacity: 1;
+    animation: dm_shimmer 1.5s ease-in-out infinite;
+}
+
+/* Date display hover — glowing lift */
+.date_master_long:hover,
+.date_master_short:hover,
+.date_master_month_year:hover,
+.date_master_year:hover,
+.date_master_day_month:hover,
+.date_master_day_short:hover,
+.date_master_day_long:hover {
+    border-color: #4DB6AC;
+    box-shadow: 0 6px 20px rgba(0, 150, 136, 0.2), 0 0 20px rgba(0, 150, 136, 0.08);
+    transform: translateY(-3px);
+    animation: none;
+}
+
+/* Calendar icon inside date displays */
+.date_master_long > i,
+.date_master_short > i,
+.date_master_month_year > i,
+.date_master_year > i,
+.date_master_day_month > i,
+.date_master_day_short > i,
+.date_master_day_long > i {
+    color: #009688;
+    font-size: 18px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease, filter 0.3s ease;
+    animation: dm_icon_pulse 3s ease-in-out infinite;
+}
+
+/* Icon glow on hover */
+.date_master_long:hover > i,
+.date_master_short:hover > i,
+.date_master_month_year:hover > i,
+.date_master_year:hover > i,
+.date_master_day_month:hover > i,
+.date_master_day_short:hover > i,
+.date_master_day_long:hover > i {
+    color: #00695C;
+    transform: scale(1.25) rotate(-8deg);
+    filter: drop-shadow(0 0 8px rgba(0, 150, 136, 0.5));
+    animation: none;
+}
+
+/* Day Long — larger, bolder, teal left border accent */
+.date_master_day_long {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    border-left: 4px solid #009688 !important;
+    padding-left: 18px !important;
+}
+
+/* Day Short — medium weight with teal left border */
+.date_master_day_short {
+    font-weight: 600 !important;
+    border-left: 3px solid #4DB6AC !important;
+    padding-left: 18px !important;
+}
+
+/* Short date — monospace feel */
+.date_master_short {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.8px !important;
+}
+
+/* Year — bold accent, extra glow */
+.date_master_year {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2px !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2f1 100%) !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   DATE PICKER INPUT
+   Class: date_master_picker
+   Styled input field with calendar icon, teal glow focus, animated border
+   ----------------------------------------------------------------------------- */
+@keyframes dm_picker_glow {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.1), 0 3px 10px rgba(0, 0, 0, 0.06); }
+    50%      { box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.2), 0 4px 15px rgba(0, 150, 136, 0.12); }
+}
+
+.date_master_picker {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.date_master_picker input {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #0d3d56;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fffe 100%);
+    border: 2px solid rgba(0, 150, 136, 0.25);
+    border-radius: 12px;
+    padding: 14px 48px 14px 18px;
+    min-width: 340px;
+    outline: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    animation: dm_picker_glow 4s ease-in-out infinite;
+}
+
+/* Focus state — teal glow ring */
+.date_master_picker input:focus {
+    border-color: #009688;
+    box-shadow: 0 0 0 5px rgba(0, 150, 136, 0.18), 0 6px 20px rgba(0, 150, 136, 0.15);
+    transform: translateY(-2px);
+    background: #fff;
+    animation: none;
+}
+
+/* Hover state */
+.date_master_picker input:hover {
+    border-color: #4DB6AC;
+    box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.12), 0 4px 15px rgba(0, 150, 136, 0.12);
+    transform: translateY(-1px);
+}
+
+/* Calendar icon */
+.date_master_picker .dm_icon {
+    position: absolute;
+    right: 16px;
+    color: #009688;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: dm_icon_pulse 3s ease-in-out infinite;
+}
+
+/* Icon animates on input focus */
+.date_master_picker input:focus ~ .dm_icon,
+.date_master_picker:focus-within .dm_icon {
+    color: #00695C;
+    transform: scale(1.3) rotate(-10deg);
+    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.5));
+    animation: none;
+}
+
+/* Icon hover */
+.date_master_picker:hover .dm_icon {
+    color: #00796B;
+    transform: scale(1.15);
+}
+
+/* Label above the picker */
+.date_master_picker_label {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0d3d56;
+    margin-bottom: 6px;
+    display: block;
+}
+
+
+/* -----------------------------------------------------------------------------
+   DATE RANGE PICKER
+   Class: date_master_range
+   Wrapper for From/To date picker pair with connected styling
+   ----------------------------------------------------------------------------- */
+.date_master_range {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.date_master_range .dm_range_from,
+.date_master_range .dm_range_to {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.date_master_range .dm_range_from input,
+.date_master_range .dm_range_to input {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0d3d56;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    padding: 10px 14px 10px 40px;
+    min-width: 160px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* From input — rounded left side only */
+.date_master_range .dm_range_from input {
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid #e0e0e0;
+}
+
+/* To input — rounded right side only */
+.date_master_range .dm_range_to input {
+    border-radius: 0 10px 10px 0;
+    border-left: 1px solid #e0e0e0;
+}
+
+/* Separator arrow — animated teal pill */
+.date_master_range .dm_range_sep {
+    background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%);
+    color: #fff;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #009688;
+    border-bottom: 2px solid #009688;
+    min-height: 46px;
+    transition: all 0.3s ease;
+}
+
+.date_master_range .dm_range_sep i {
+    transition: transform 0.3s ease;
+}
+
+.date_master_range:hover .dm_range_sep {
+    background: linear-gradient(135deg, #00796B 0%, #009688 100%);
+    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.3);
+}
+
+.date_master_range:hover .dm_range_sep i {
+    transform: translateX(3px);
+}
+
+/* Range icons */
+.date_master_range .dm_icon {
+    position: absolute;
+    left: 12px;
+    color: #009688;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+/* Focus on range inputs */
+.date_master_range input:focus {
+    border-color: #009688;
+    box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.12);
+    z-index: 1;
+}
+
+.date_master_range input:hover {
+    border-color: #4DB6AC;
+}
+
+
+/* -----------------------------------------------------------------------------
+   DATE BADGE (small pill for cards/tables)
+   Class: date_master_badge
+   ----------------------------------------------------------------------------- */
+@keyframes dm_badge_shimmer {
+    0%   { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.date_master_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #009688;
+    background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 50%, #E0F2F1 100%);
+    background-size: 200% 100%;
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 150, 136, 0.25);
+    box-shadow: 0 2px 6px rgba(0, 150, 136, 0.12);
+    transition: all 0.4s ease;
+    cursor: default;
+    letter-spacing: 0.3px;
+    animation: dm_badge_shimmer 6s ease-in-out infinite;
+}
+
+.date_master_badge:hover {
+    background: linear-gradient(135deg, #B2DFDB 0%, #80CBC4 50%, #B2DFDB 100%);
+    background-size: 200% 100%;
+    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.25);
+    transform: translateY(-2px) scale(1.03);
+    color: #00695C;
+    animation: none;
+}
+
+.date_master_badge i {
+    font-size: 12px;
+    color: #4DB6AC;
+    transition: all 0.3s ease;
+    animation: dm_icon_pulse 3s ease-in-out infinite;
+}
+
+.date_master_badge:hover i {
+    transform: scale(1.3) rotate(-10deg);
+    color: #009688;
+    filter: drop-shadow(0 0 4px rgba(0, 150, 136, 0.4));
+    animation: none;
+}
+
+
+/* -----------------------------------------------------------------------------
+   FLATPICKR CALENDAR OVERRIDES (SmartWeigh branded)
+   Applied globally when flatpickr is loaded — teal theme with smooth transitions
+   ----------------------------------------------------------------------------- */
+.flatpickr-calendar {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 150, 136, 0.15) !important;
+    overflow: hidden;
+}
+
+.flatpickr-months {
+    background: linear-gradient(135deg, #009688 0%, #4DB6AC 100%) !important;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 4px 0 !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: #fff !important;
+    fill: #fff !important;
+    height: 40px !important;
+}
+
+.flatpickr-current-month {
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    color: #fff !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    background: transparent !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    fill: #fff !important;
+    color: #fff !important;
+    transition: all 0.2s ease !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+}
+
+.flatpickr-weekdays {
+    background: rgba(0, 150, 136, 0.08) !important;
+}
+
+span.flatpickr-weekday {
+    color: #009688 !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+}
+
+.flatpickr-day {
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+    font-weight: 500 !important;
+    color: #0d3d56 !important;
+}
+
+.flatpickr-day:hover {
+    background: #E0F2F1 !important;
+    border-color: transparent !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: linear-gradient(135deg, #009688 0%, #00796B 100%) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.35) !important;
+    font-weight: 700 !important;
+}
+
+.flatpickr-day.today:not(.selected) {
+    border-color: #009688 !important;
+    color: #009688 !important;
+    font-weight: 700 !important;
+}
+
+.flatpickr-day.today:not(.selected):hover {
+    background: #E0F2F1 !important;
+    color: #009688 !important;
+}
+
+.flatpickr-day.inRange {
+    background: #E0F2F1 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+/* -----------------------------------------------------------------------------
+   LEGACY CLASS ALIASES (backward compatibility)
+   These map the old cims-*-button names to the new button_master styles.
+   The old class names still work — no existing code will break.
+   ----------------------------------------------------------------------------- */
+.cims-pint-button {
+    background: linear-gradient(to right, #9B0054 0%, #CD006E 100%) !important;
+    box-shadow: 0 4px 15px rgba(205, 0, 110, 0.35);
+}
+.cims-pint-button:hover {
+    background: linear-gradient(to right, #B30060 0%, #E0007A 100%) !important;
+    box-shadow: 0 8px 25px rgba(205, 0, 110, 0.5);
+}
+.cims-pint-button:active {
+    box-shadow: 0 4px 12px rgba(205, 0, 110, 0.4);
+}
+
+
+/* =============================================================================
+   7. CLEAR CACHE OVERLAY
+   =============================================================================
+   Full-screen overlay with spinner shown during cache clearing.
+   Triggered by JS when user clicks Clear Cache in Admin menu.
+   ============================================================================= */
+
+/* Overlay background */
+.cims-cache-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+}
+.cims-cache-overlay.active {
+    display: flex;
+}
+
+/* Centered box */
+.cims-cache-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 50px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Spinning circle */
+.cims-cache-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #e0e0e0;
+    border-top: 5px solid #17A2B8;
+    border-radius: 50%;
+    animation: cimsSpin 0.8s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+@keyframes cimsSpin {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Text */
+.cims-cache-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d3d56;
+    letter-spacing: 0.5px;
+}
+
+
+/* =============================================================================
+   8. EXCEL MASTER
+   =============================================================================
+   Reusable Excel export component for system-wide report exports.
+   JS:  public/modules/cimscore/js/cims_excel_master.js
+   CDN: ExcelJS + FileSaver.js (required on page)
+
+   USAGE:
+     cimsExcelExport({ title, company, date, headers, rows, totals, filename })
+
+   Number Format: 1 000.00 (space thousands, period decimal, 2 places)
+   ============================================================================= */
+
+/* Keyframe: Excel icon pulse animation */
+@keyframes em_icon_pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.15); }
+}
+
+/* Keyframe: Success shimmer */
+@keyframes em_shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Keyframe: Glow ring on export */
+@keyframes em_glow {
+    0%, 100% { box-shadow: 0 0 8px rgba(23,162,184,0.3); }
+    50%      { box-shadow: 0 0 20px rgba(23,162,184,0.6), 0 0 40px rgba(23,162,184,0.2); }
+}
+
+/* Excel Master demo card in system settings */
+.excel_master_card {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fafb 100%);
+    border-radius: 12px;
+    padding: 24px 28px;
+    border-left: 5px solid #17A2B8;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+}
+.excel_master_card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Preview area showing formatted Excel output */
+.excel_master_preview {
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.excel_master_preview_header {
+    background: linear-gradient(135deg, #0d3d56 0%, #17A2B8 100%);
+    color: #fff;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.excel_master_preview_row {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-family: 'Calibri', 'Poppins', sans-serif;
+    border-bottom: 1px solid #eef2f7;
+}
+.excel_master_preview_row:nth-child(even) {
+    background: #fafbfc;
+}
+.excel_master_preview_row.em_total {
+    background: #0d3d56;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    border-bottom: none;
+}
+.excel_master_preview_cell {
+    flex: 1;
+    padding: 2px 6px;
+}
+.excel_master_preview_cell.em_right {
+    text-align: right;
+    font-family: 'Calibri', monospace;
+}
+.excel_master_preview_cell.em_teal {
+    color: #17A2B8;
+    font-weight: 600;
+}
+.excel_master_preview_cell.em_amber {
+    color: #856404;
+}
+.excel_master_preview_cell.em_red {
+    color: #c0392b;
+}
+.excel_master_preview_cell.em_dark_red {
+    color: #721c24;
+    font-weight: 700;
+}
+
+/* Function reference badge */
+.excel_master_ref {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0d3d56;
+    color: #4DB6AC;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+    border-left: 4px solid #17A2B8;
+    animation: em_glow 3s ease-in-out infinite;
+}
+.excel_master_ref .em_param {
+    color: #FFD54F;
+}
+.excel_master_ref .em_comment {
+    color: #78909C;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Info text beneath the function */
+.excel_master_info {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+    padding-left: 4px;
+    line-height: 1.8;
+}
+.excel_master_info code {
+    background: #f0fafb;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #0d3d56;
+    font-weight: 600;
+}
+
+/* Number format demo */
+.excel_master_num_demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid #e2e8f0;
+}
+.excel_master_num_demo .em_label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+.excel_master_num_demo .em_value {
+    font-family: 'Calibri', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0d3d56;
+}
+
+/* Export button with animation (used on demo card) */
+.excel_master_btn_demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #17A2B8 0%, #138496 100%);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(23,162,184,0.35);
+    letter-spacing: 0.5px;
+}
+.excel_master_btn_demo:hover {
+    background: linear-gradient(135deg, #138496 0%, #0d6d7e 100%);
+    box-shadow: 0 6px 25px rgba(23,162,184,0.5);
+    transform: translateY(-2px);
+}
+.excel_master_btn_demo:hover i {
+    animation: em_icon_pulse 0.8s ease-in-out infinite;
+}
+.excel_master_btn_demo:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(23,162,184,0.3);
+}
+
+
+/* =============================================================================
+   CIMS MASTER TAGS / BADGES
+   Consistent tag/badge styles for use across the entire CIMS system.
+   Naming convention: tag_master_{name}
+
+   Available tags:
+   1.  tag_master_yes       - Yes / Enabled            (Green)
+   2.  tag_master_no        - No / Disabled             (Grey)
+   3.  tag_master_active    - Active status             (Green)
+   4.  tag_master_inactive  - Inactive status           (Amber)
+
+   Usage: <span class="tag_master_yes">Yes</span>
+          <span class="tag_master_active">Active</span>
+   ============================================================================= */
+
+/* BASE TAG STYLE (shared by all tag_master tags) */
+[class*="tag_master_"] {
+    display: inline-block;
+    min-width: 80px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* 1. YES TAG (Green) */
+.tag_master_yes {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* 2. NO TAG (Grey) */
+.tag_master_no {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3);
+}
+
+/* 3. ACTIVE TAG (Green) */
+.tag_master_active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* 4. INACTIVE TAG (Amber) */
+.tag_master_inactive {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* ═══════════════════════════════════════════════
+   CIMS MONEY FORMAT
+   Standard money display: right-aligned, 3px right padding
+   Use with PHP helper cims_money_format() for values
+   ═══════════════════════════════════════════════ */
+.cims_money_format {
+    text-align: right;
+    padding-right: 3px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════
+   BUTTON DELETE WHITE (invisible placeholder)
+   Exact same size as button_master_delete but all white
+   ═══════════════════════════════════════════════ */
+.button_delete_white {
+    background: #fff !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    cursor: default !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}

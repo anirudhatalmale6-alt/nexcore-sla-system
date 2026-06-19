@@ -1,0 +1,1337 @@
+/*
+ * ============================================================
+ * NexCore Main Layout CSS
+ * ============================================================
+ *
+ * Component:     nexcore_main_layout
+ * Version:       1.0
+ * Location:      /public/nexcore/master/nexcore_main_css/nexcore_main_layout.css
+ *
+ * Consolidated layout stylesheet containing all system-level
+ * structural components. Each section was originally a separate
+ * component file; they are combined here for single-file loading.
+ *
+ * TABLE OF CONTENTS:
+ *   1. SIDEBAR      - Left navigation panel (nxsb-* classes)
+ *   2. TITLE BAR    - Top bar with module name & user controls (nxtb-* classes)
+ *   3. ACTION BAR   - Button row below title bar (nxab-* classes)
+ *   4. HEADER       - Page title, description & stats (nxhd-* classes)
+ *   5. BODY         - Main scrollable content area (nxbd-* classes)
+ *   6. FOOTER       - Bottom bar with copyright & status (nxft-* classes)
+ *   7. DRAWER       - Right slide-out panel (nxdw-* classes)
+ *
+ * Dependencies:
+ *   - Google Fonts: Montserrat (system default font)
+ *   - Font Awesome 6 (icons)
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =============================================================================
+   1. SIDEBAR
+   =============================================================================
+   Left navigation panel. Supports 3-level menu: group headings,
+   menu items, and child items. Collapsible with tooltips.
+   Original: system_master_sidebar.css (v2.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   CSS VARIABLES
+   ========================================================= */
+:root {
+    --nxsb-width: 270px;
+    --nxsb-width-collapsed: 62px;
+    --nxsb-border: rgba(255,255,255,0.06);
+    --nxsb-text: rgba(255,255,255,0.6);
+    --nxsb-text-hover: #ffffff;
+    --nxsb-text-active: #ffffff;
+    --nxsb-accent-green: #059669;
+    --nxsb-accent-blue: #2563eb;
+    --nxsb-accent-amber: #d97706;
+    --nxsb-accent-purple: #8b5cf6;
+    --nxsb-accent-cyan: #06b6d4;
+    --nxsb-item-hover-bg: rgba(255,255,255,0.03);
+    --nxsb-item-active-bg: rgba(34,197,94,0.12);
+    --nxsb-item-active-border: #22c55e;
+    --nxsb-transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    --nxsb-font: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   SIDEBAR CONTAINER
+   ========================================================= */
+.nxsb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nxsb-width);
+    height: 100vh;
+    background: #000000;
+    border-right: 1px solid var(--nxsb-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: width var(--nxsb-transition), min-width var(--nxsb-transition);
+    overflow: hidden;
+    font-family: var(--nxsb-font);
+    flex-shrink: 0;
+}
+
+
+.nxsb-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   COLLAPSED STATE
+   ========================================================= */
+.nxsb.nxsb-collapsed {
+    width: var(--nxsb-width-collapsed);
+}
+
+
+/* =========================================================
+   BRAND / LOGO AREA
+   ========================================================= */
+.nxsb-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.nxsb-brand a {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nxsb-brand-logo {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    object-fit: contain;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-brand-logo {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-brand {
+    justify-content: center;
+    padding: 14px 10px;
+}
+
+
+/* =========================================================
+   COLLAPSE / EXPAND TOGGLE BUTTON
+   ========================================================= */
+.nxsb-toggle {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.25s ease;
+}
+
+.nxsb-toggle:hover {
+    background: rgba(34,197,94,0.12);
+    border-color: rgba(34,197,94,0.3);
+    color: #22c55e;
+}
+
+.nxsb.nxsb-collapsed .nxsb-toggle {
+    margin-left: 0;
+}
+
+
+/* =========================================================
+   MENU SECTION
+   ========================================================= */
+.nxsb-menu {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+
+.nxsb-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nxsb-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nxsb-menu::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+}
+
+
+/* =========================================================
+   MENU GROUP
+   ========================================================= */
+.nxsb-group {
+    margin-bottom: 4px;
+}
+
+.nxsb-group-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: var(--nxsb-font);
+}
+
+.nxsb-group-label:hover {
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.02);
+}
+
+.nxsb-group.nxsb-group-open > .nxsb-group-label {
+    color: rgba(255,255,255,0.6);
+}
+
+.nxsb-group-arrow {
+    font-size: 9px;
+    transition: transform 0.3s ease;
+    opacity: 0.4;
+    transform: rotate(-90deg);
+}
+
+.nxsb-group.nxsb-group-open > .nxsb-group-label .nxsb-group-arrow {
+    transform: rotate(0deg);
+}
+
+.nxsb-group-items {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nxsb.nxsb-collapsed .nxsb-group-label {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-group-items {
+    max-height: none !important;
+    overflow: visible;
+}
+
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+.nxsb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--nxsb-text);
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.nxsb-item:hover {
+    color: var(--nxsb-text-hover);
+    background: var(--nxsb-item-hover-bg);
+}
+
+.nxsb-item-icon {
+    width: 20px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.nxsb-item-text {
+    overflow: hidden;
+    transition: opacity 0.25s ease, width 0.25s ease;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item-text {
+    opacity: 0;
+    width: 0;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item {
+    justify-content: center;
+    padding: 12px 0;
+    border-left: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-item .nxsb-item-icon {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   ACTIVE MENU ITEM
+   ========================================================= */
+.nxsb-item.nxsb-active {
+    color: var(--nxsb-text-active);
+    background: var(--nxsb-item-active-bg);
+    border-left-color: var(--nxsb-item-active-border);
+}
+
+.nxsb-item.nxsb-active .nxsb-item-icon {
+    color: var(--nxsb-accent-green);
+}
+
+
+/* =========================================================
+   EXPANDABLE PARENT (Level 2 with children)
+   ========================================================= */
+.nxsb-section {
+    margin-top: 2px;
+}
+
+.nxsb-parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    color: var(--nxsb-text);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--nxsb-font);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nxsb-parent:hover {
+    color: var(--nxsb-text-hover);
+    background: var(--nxsb-item-hover-bg);
+}
+
+.nxsb-parent-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nxsb-parent-left .nxsb-item-icon {
+    width: 20px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.nxsb-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+    opacity: 0.5;
+    transform: rotate(-90deg);
+}
+
+.nxsb-section.nxsb-open > .nxsb-parent .nxsb-arrow {
+    transform: rotate(0deg);
+}
+
+.nxsb-section.nxsb-open > .nxsb-parent {
+    color: var(--nxsb-text-hover);
+}
+
+
+/* =========================================================
+   CHILD ITEMS (Level 3)
+   ========================================================= */
+.nxsb-children {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nxsb-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 48px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+}
+
+.nxsb-child::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+}
+
+.nxsb-child i {
+    width: 16px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.nxsb-child:hover {
+    color: rgba(255,255,255,0.85);
+    background: var(--nxsb-item-hover-bg);
+    padding-left: 52px;
+}
+
+.nxsb-child.nxsb-active {
+    color: #fff;
+    background: var(--nxsb-item-active-bg);
+    border-left-color: var(--nxsb-item-active-border);
+}
+
+.nxsb-child.nxsb-active i {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   COLLAPSED STATE - Parents and Children
+   ========================================================= */
+.nxsb.nxsb-collapsed .nxsb-parent {
+    justify-content: center;
+    padding: 12px 0;
+    border-left: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent-left {
+    justify-content: center;
+    gap: 0;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent-left .nxsb-item-icon {
+    font-size: 16px;
+}
+
+.nxsb.nxsb-collapsed .nxsb-parent .nxsb-item-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.nxsb.nxsb-collapsed .nxsb-arrow {
+    display: none;
+}
+
+.nxsb.nxsb-collapsed .nxsb-children {
+    max-height: 0 !important;
+}
+
+.nxsb.nxsb-collapsed .nxsb-child {
+    padding: 8px 0;
+    justify-content: center;
+}
+
+.nxsb.nxsb-collapsed .nxsb-child::before {
+    display: none;
+}
+
+
+/* =========================================================
+   MENU DIVIDER
+   ========================================================= */
+.nxsb-divider {
+    height: 3px;
+    background: rgba(255,255,255,0.5);
+    margin: 8px 16px;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+.nxsb-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--nxsb-border);
+    position: relative;
+}
+
+.nxsb-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 1px;
+    background: var(--nxsb-border);
+}
+
+.nxsb-footer-text {
+    font-size: 9px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-footer-text {
+    opacity: 0;
+}
+
+.nxsb-footer-line {
+    height: 2px;
+    margin-top: 10px;
+    border-radius: 1px;
+    background: linear-gradient(90deg,
+        var(--nxsb-accent-green) 0%,
+        var(--nxsb-accent-blue) 33%,
+        var(--nxsb-accent-amber) 66%,
+        var(--nxsb-accent-purple) 100%
+    );
+}
+
+
+/* =========================================================
+   TOOLTIP ON COLLAPSED STATE
+   ========================================================= */
+.nxsb.nxsb-collapsed .nxsb-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(var(--nxsb-width-collapsed) + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1e293b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.nxsb.nxsb-collapsed .nxsb-item:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   BADGE / COUNT
+   ========================================================= */
+.nxsb-badge {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--nxsb-font);
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.04);
+    padding: 2px 7px;
+    border-radius: 8px;
+    min-width: 20px;
+    text-align: center;
+    transition: opacity var(--nxsb-transition);
+}
+
+.nxsb.nxsb-collapsed .nxsb-badge {
+    display: none;
+}
+
+
+/* =========================================================
+   MAIN CONTENT PUSH
+   ========================================================= */
+.nxsb-content {
+    margin-left: var(--nxsb-width);
+    transition: margin-left var(--nxsb-transition);
+    min-height: 100vh;
+}
+
+.nxsb.nxsb-collapsed ~ .nxsb-content,
+.nxsb-content.nxsb-content-collapsed {
+    margin-left: var(--nxsb-width-collapsed);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+@media (max-width: 768px) {
+    .nxsb {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .nxsb.nxsb-mobile-open {
+        transform: translateX(0);
+        box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+    }
+
+    .nxsb-content {
+        margin-left: 0;
+    }
+
+    .nxsb-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+    }
+
+    .nxsb.nxsb-mobile-open ~ .nxsb-overlay {
+        display: block;
+    }
+}
+
+
+/* =============================================================================
+   2. TITLE BAR
+   =============================================================================
+   Top bar to the right of the sidebar. Shows module name,
+   breadcrumbs, and user controls. Height: 56px.
+   Original: system_master_titlebar.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   TITLE BAR CONTAINER
+   Fixed top bar, positioned to the right of the sidebar.
+   Height: 56px. Dark background with subtle bottom border.
+   ========================================================= */
+.nxtb {
+    height: 56px;
+    background: linear-gradient(180deg, #0c1120 0%, #0a0e1a 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Module name and breadcrumb navigation.
+   ========================================================= */
+.nxtb-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Module name - bold, white */
+.nxtb-module {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Breadcrumb separator */
+.nxtb-sep {
+    width: 1px;
+    height: 16px;
+    background: rgba(255,255,255,0.15);
+}
+
+/* Page name / breadcrumb text */
+.nxtb-page {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   RIGHT SECTION
+   User info, notifications, and controls.
+   ========================================================= */
+.nxtb-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Icon buttons (notifications, settings, etc.) */
+.nxtb-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nxtb-icon-btn:hover {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Notification dot on icon buttons */
+.nxtb-icon-btn .nxtb-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #059669;
+    box-shadow: 0 0 6px rgba(5,150,105,0.5);
+}
+
+/* User avatar */
+.nxtb-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #059669, #2563eb);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   MOBILE MENU TOGGLE
+   Hamburger button visible only on small screens.
+   Opens the sidebar overlay.
+   ========================================================= */
+.nxtb-mobile-toggle {
+    display: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .nxtb-mobile-toggle { display: flex; }
+}
+
+
+/* =============================================================================
+   3. ACTION BAR
+   =============================================================================
+   Single row bar below the title bar. Contains action buttons
+   (Add New, Export, etc.), search input, and filter controls.
+   Original: system_master_actionbar.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   ACTION BAR CONTAINER
+   Single row, space-between layout. Subtle background
+   with top/bottom borders.
+   ========================================================= */
+.nxab {
+    height: 50px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    gap: 16px;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Action buttons (Add New, Import, Export, etc.)
+   ========================================================= */
+.nxab-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Action button base style */
+.nxab-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: none;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.nxab-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.2);
+}
+
+/* Primary action button (e.g. Add New) - green accent */
+.nxab-btn-primary {
+    background: rgba(5,150,105,0.15);
+    border-color: rgba(5,150,105,0.3);
+    color: #34d399;
+}
+
+.nxab-btn-primary:hover {
+    background: rgba(5,150,105,0.25);
+    border-color: rgba(5,150,105,0.5);
+    color: #6ee7b7;
+    box-shadow: 0 0 12px rgba(5,150,105,0.2);
+}
+
+/* =========================================================
+   RIGHT SECTION
+   Search input and filter controls.
+   ========================================================= */
+.nxab-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Search input */
+.nxab-search {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 14px 7px 34px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    width: 220px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.nxab-search::placeholder {
+    color: rgba(255,255,255,0.25);
+}
+
+.nxab-search:focus {
+    outline: none;
+    border-color: rgba(5,150,105,0.4);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 0 12px rgba(5,150,105,0.1);
+}
+
+/* Search icon wrapper (positioned inside the input) */
+.nxab-search-wrap {
+    position: relative;
+}
+
+.nxab-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .nxab { flex-wrap: wrap; height: auto; padding: 10px 16px; }
+    .nxab-search { width: 100%; }
+}
+
+
+/* =============================================================================
+   4. HEADER
+   =============================================================================
+   Page title, description, and optional summary stats.
+   Sits below the action bar.
+   Original: system_master_header.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   HEADER CONTAINER
+   Full width section with padding. Bottom border separator.
+   ========================================================= */
+.nxhd {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =========================================================
+   HEADER CONTENT ROW
+   Title/description on the left, stats on the right.
+   ========================================================= */
+.nxhd-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+/* =========================================================
+   TITLE AND DESCRIPTION
+   ========================================================= */
+.nxhd-info {
+    flex: 1;
+}
+
+/* Page title - large, bold */
+.nxhd-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+}
+
+/* Page description - muted, smaller */
+.nxhd-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+/* =========================================================
+   HEADER STATS
+   Small stat blocks on the right side of the header.
+   ========================================================= */
+.nxhd-stats {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+/* Individual stat block */
+.nxhd-stat {
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    min-width: 80px;
+}
+
+/* Stat number - large, coloured */
+.nxhd-stat-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #059669;
+    letter-spacing: -0.5px;
+}
+
+/* Stat label - tiny, muted */
+.nxhd-stat-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .nxhd-row { flex-direction: column; }
+    .nxhd-stats { width: 100%; justify-content: flex-start; }
+}
+
+
+/* =============================================================================
+   5. BODY
+   =============================================================================
+   Main scrollable content area. Tables, forms, cards,
+   dashboards, and all primary content goes here.
+   Original: system_master_body.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   BODY CONTAINER
+   Flexible, scrollable content area. Fills remaining
+   vertical space between header and footer.
+   ========================================================= */
+.nxbd {
+    flex: 1;
+    padding: 24px;
+    font-family: 'Montserrat', sans-serif;
+    overflow-y: auto;
+}
+
+/* =========================================================
+   BODY CONTENT WRAPPER
+   Optional max-width constraint for readability.
+   Remove or adjust per module needs.
+   ========================================================= */
+.nxbd-inner {
+    width: 100%;
+}
+
+/* =========================================================
+   EMPTY STATE / COMING SOON
+   Centred message shown when a section has no content yet.
+   ========================================================= */
+.nxbd-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    text-align: center;
+    min-height: 300px;
+}
+
+/* Large icon container */
+.nxbd-empty-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(5,150,105,0.12), rgba(37,99,235,0.12));
+    border: 1px solid rgba(5,150,105,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.nxbd-empty-icon i {
+    font-size: 40px;
+    background: linear-gradient(135deg, #059669, #2563eb, #d97706, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Empty state title */
+.nxbd-empty-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+}
+
+/* Empty state description */
+.nxbd-empty-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* 4-colour gradient line */
+.nxbd-gradient-line {
+    width: 160px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #059669, #2563eb, #d97706, #7c3aed);
+    margin: 32px auto 0;
+}
+
+
+/* =============================================================================
+   6. FOOTER
+   =============================================================================
+   Sticky footer bar at the bottom. Copyright, version info,
+   status indicators, and the 4-colour gradient line.
+   Original: system_master_footer.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   FOOTER CONTAINER
+   Fixed at the bottom. Flex row layout with space-between.
+   ========================================================= */
+.nxft {
+    height: 36px;
+    background: linear-gradient(180deg, #0a0e1a 0%, #080b14 100%);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: 'Montserrat', sans-serif;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   LEFT SECTION
+   Copyright text.
+   ========================================================= */
+.nxft-left {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   RIGHT SECTION
+   Version / status info.
+   ========================================================= */
+.nxft-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Individual status indicator */
+.nxft-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+}
+
+/* Status dot (green = online) */
+.nxft-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #059669;
+    box-shadow: 0 0 6px rgba(5,150,105,0.4);
+}
+
+/* Version text */
+.nxft-version {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   FOUR-COLOUR GRADIENT LINE
+   Sits at the very bottom edge of the footer.
+   Matches the NexCore brand gradient.
+   ========================================================= */
+.nxft-gradient-line {
+    height: 2px;
+    background: linear-gradient(90deg, #059669, #2563eb, #d97706, #7c3aed);
+    flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   7. DRAWER
+   =============================================================================
+   Right slide-out panel for detail views, editing forms,
+   or previews. Hidden by default, shown with .nxdw-open.
+   Original: system_master_drawer.css (v1.0)
+   ============================================================================= */
+
+
+/* =========================================================
+   DRAWER CONTAINER
+   Fixed position, full height, slides in from the right.
+   Default width: 380px. Hidden off-screen until opened.
+   ========================================================= */
+.nxdw {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0c1120 0%, #0a0e1a 100%);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+    z-index: 1100;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Open state - slide into view */
+.nxdw.nxdw-open {
+    transform: translateX(0);
+}
+
+/* =========================================================
+   DRAWER HEADER
+   Title and close button at the top of the drawer.
+   ========================================================= */
+.nxdw-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Drawer title */
+.nxdw-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+/* Close button */
+.nxdw-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.nxdw-close:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* =========================================================
+   DRAWER BODY
+   Scrollable content area of the drawer.
+   ========================================================= */
+.nxdw-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for the drawer */
+.nxdw-body::-webkit-scrollbar {
+    width: 3px;
+}
+
+.nxdw-body::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+}
+
+/* =========================================================
+   DRAWER FOOTER
+   Optional action buttons at the bottom of the drawer.
+   ========================================================= */
+.nxdw-footer {
+    padding: 14px 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+/* =========================================================
+   DRAWER OVERLAY
+   Dark backdrop behind the drawer when open.
+   ========================================================= */
+.nxdw-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1099;
+}
+
+.nxdw-overlay.nxdw-overlay-visible {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nxdw { width: 100%; }
+}

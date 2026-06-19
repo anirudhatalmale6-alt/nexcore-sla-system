@@ -1,0 +1,221 @@
+/*
+ * ============================================================
+ * NexCore Main Typography
+ * ============================================================
+ *
+ * Component:     nexcore_main_typography
+ * Version:       1.0
+ * Location:      /public/nexcore/master/nexcore_main_css/nexcore_main_typography.css
+ *
+ * Master typography definitions for the NexCore design system.
+ * Defines text standards T1-T8, font weights, text colours,
+ * utility classes, and the brand gradient text effect.
+ *
+ * All text uses Montserrat as the primary typeface.
+ * Poppins is loaded as a secondary / accent font.
+ *
+ * TABLE OF CONTENTS:
+ *   1. FONT IMPORTS
+ *   2. BASE TYPOGRAPHY
+ *   3. HEADING STANDARDS (T1-T8)
+ *   4. FONT WEIGHTS
+ *   5. TEXT COLOURS
+ *   6. TEXT UTILITIES
+ *   7. GRADIENT TEXT
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =============================================================================
+   1. FONT IMPORTS
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =============================================================================
+   2. BASE TYPOGRAPHY
+   ============================================================================= */
+
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* =============================================================================
+   3. HEADING STANDARDS (T1 - T8)
+   =============================================================================
+   Reference codes used in conversation:
+     T1  Page titles, hero headings
+     T2  Section headings, modal titles (matches NxAlert title)
+     T3  Card headings, drawer titles
+     T4  Sub-headings, tab labels
+     T5  Body text (matches NxAlert body)
+     T6  Description text, help text
+     T7  Labels, column headers
+     T8  Footnotes, captions, footer text
+   ============================================================================= */
+
+/* T1 - Page Titles / Hero Headings */
+.nx-t1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.3;
+}
+
+/* T2 - Section Headings / Modal Titles */
+.nx-t2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.nx-t2-dark {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* T3 - Card Headings / Drawer Titles */
+.nx-t3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+}
+
+/* T4 - Sub-headings / Tab Labels */
+.nx-t4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+}
+
+/* T5 - Body Text */
+.nx-t5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e293b;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+.nx-t5-dark {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+}
+
+/* T6 - Description Text / Help Text */
+.nx-t6 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+}
+
+/* T7 - Labels / Column Headers */
+.nx-t7 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* T8 - Footnotes / Captions / Footer Text */
+.nx-t8 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+}
+
+
+/* =============================================================================
+   4. FONT WEIGHTS
+   ============================================================================= */
+
+.nx-fw-light     { font-weight: 300; }
+.nx-fw-regular   { font-weight: 400; }
+.nx-fw-medium    { font-weight: 500; }
+.nx-fw-semibold  { font-weight: 600; }
+.nx-fw-bold      { font-weight: 700; }
+.nx-fw-extrabold { font-weight: 800; }
+.nx-fw-black     { font-weight: 900; }
+
+
+/* =============================================================================
+   5. TEXT COLOURS
+   ============================================================================= */
+
+.nx-text-white  { color: #ffffff; }
+.nx-text-muted  { color: rgba(255, 255, 255, 0.4); }
+.nx-text-cyan   { color: #22d3ee; }
+.nx-text-green  { color: #059669; }
+.nx-text-amber  { color: #d97706; }
+.nx-text-red    { color: #dc2626; }
+.nx-text-purple { color: #7c3aed; }
+
+
+/* =============================================================================
+   6. TEXT UTILITIES
+   ============================================================================= */
+
+.nx-text-center    { text-align: center; }
+.nx-text-right     { text-align: right; }
+.nx-text-uppercase { text-transform: uppercase; }
+
+.nx-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nx-text-nowrap { white-space: nowrap; }
+
+
+/* =============================================================================
+   7. GRADIENT TEXT
+   =============================================================================
+   4-colour NexCore brand gradient: Green > Blue > Amber > Purple.
+   Uses background-clip to apply the gradient to text fill.
+   ============================================================================= */
+
+.nx-text-gradient {
+    background: linear-gradient(135deg, #059669, #2563eb, #d97706, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

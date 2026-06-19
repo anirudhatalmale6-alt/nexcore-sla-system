@@ -1,0 +1,283 @@
+/*
+ * ============================================================
+ * NxAlert - NexCore Enterprise Message Box Styles
+ * ============================================================
+ *
+ * Component:     nexcore_main_messages
+ * Version:       2.0
+ * Location:      /public/nexcore/master/nexcore_main_messages/nexcore_main_messages.css
+ *
+ * Dependencies:
+ *   - SweetAlert2 v11 CSS (must be loaded BEFORE this file)
+ *   - Google Fonts: Montserrat (system default font)
+ *
+ * Paired with:
+ *   - /public/nexcore/master/nexcore_main_messages/nexcore_main_messages.js
+ *
+ * Usage:
+ *   Add this stylesheet to any page that uses NxAlert message
+ *   boxes. Load it after the SweetAlert2 CSS in the <head>.
+ *
+ * Design Standards:
+ *   - Title:   T2 (18px, 700 weight, #1e293b)
+ *   - Body:    T5 (14px, 500 weight, #1e293b)
+ *   - Button:  B9 (160px min-width, centered, pink gradient)
+ *   - Cancel:  Cyan gradient with glow
+ *   - Border:  4-color gradient (green, blue, amber, purple)
+ *   - Font:    Montserrat throughout
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =========================================================
+   LAYER CONTROL
+   Force NxAlert popups above all other UI layers
+   (modals, navbars, sidebars, tooltips, etc.)
+   ========================================================= */
+.swal2-container {
+    z-index: 99999 !important;
+}
+
+
+/* =========================================================
+   POPUP CONTAINER
+   White radial gradient background with rounded corners.
+   Width auto-grows with content, capped at 500px max.
+   The transparent border + background-clip creates space
+   for the gradient border (see ::before below).
+   ========================================================= */
+.nx-swal-popup {
+    background: radial-gradient(ellipse at center, #ffffff 60%, #f8fafc 100%) !important;
+    border-radius: 20px !important;
+    box-shadow:
+        0 0 20px rgba(5,150,105,0.12),
+        0 0 20px rgba(37,99,235,0.08),
+        0 0 20px rgba(217,119,6,0.08),
+        0 0 20px rgba(124,58,237,0.08),
+        0 25px 60px rgba(0,0,0,0.15) !important;
+    padding: 32px 28px 24px !important;
+    border: 5px solid transparent !important;
+    background-clip: padding-box !important;
+    min-width: 300px !important;
+    max-width: 500px !important;
+    position: relative !important;
+}
+
+
+/* =========================================================
+   4-COLOR GRADIENT BORDER
+   Uses a ::before pseudo-element positioned behind the popup.
+   The gradient flows diagonally through the NexCore brand
+   colours: Green > Blue > Amber > Purple.
+   The 5px transparent border on the popup creates the gap
+   that reveals this gradient underneath.
+   ========================================================= */
+.nx-swal-popup::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #059669 0%, #2563eb 33%, #d97706 66%, #7c3aed 100%);
+    z-index: -1;
+}
+
+
+/* =========================================================
+   TITLE - T2 STANDARD
+   Bold, dark, Montserrat. Used for all message box headings.
+   ========================================================= */
+.nx-swal-title {
+    color: #1e293b !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    letter-spacing: 0.5px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    margin-top: 8px !important;
+}
+
+
+/* =========================================================
+   BODY TEXT - T5 STANDARD
+   Medium weight, dark, readable line height.
+   Used for all message box body content.
+   ========================================================= */
+.nx-swal-html {
+    color: #1e293b !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+    letter-spacing: 0.3px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+
+/* =========================================================
+   BUTTONS - B9 STANDARD (BASE)
+   All message box buttons share these properties:
+   160px minimum width, centered text, rounded corners,
+   smooth hover transitions.
+   ========================================================= */
+.nx-swal-actions .swal2-confirm,
+.nx-swal-actions .swal2-cancel {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.3px !important;
+    border-radius: 8px !important;
+    padding: 10px 22px !important;
+    border: none !important;
+    min-width: 160px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+}
+
+
+/* =========================================================
+   CONFIRM BUTTON - PINK GRADIENT (B9)
+   Pink-to-magenta gradient with glow shadow.
+   Lifts on hover with intensified glow.
+   ========================================================= */
+.nx-swal-actions .swal2-confirm {
+    background: linear-gradient(135deg, #ec4899, #db2777) !important;
+    color: #fff !important;
+    box-shadow: 0 0 20px rgba(236,72,153,0.25) !important;
+}
+
+.nx-swal-actions .swal2-confirm:hover {
+    box-shadow: 0 0 30px rgba(236,72,153,0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON - CYAN GRADIENT
+   Cyan-to-teal gradient with glow shadow.
+   Used on M5 (Confirm) and M6 (Delete) dialogs.
+   ========================================================= */
+.nx-swal-actions .swal2-cancel {
+    background: linear-gradient(135deg, #22d3ee, #0891b2) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: 0 0 20px rgba(6,182,212,0.25) !important;
+}
+
+.nx-swal-actions .swal2-cancel:hover {
+    box-shadow: 0 0 30px rgba(6,182,212,0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+
+/* =========================================================
+   HIDE DEFAULT SWEETALERT2 ICON
+   NxAlert uses the NexCore brand icon (via imageUrl) instead
+   of SweetAlert2's built-in success/error/warning icons.
+   ========================================================= */
+.swal2-popup .swal2-icon {
+    display: none !important;
+}
+
+
+/* =========================================================
+   BRAND LOGO SPACING
+   Controls spacing for the NexCore icon inside the popup.
+   ========================================================= */
+.nx-swal-logo {
+    margin: 0 auto 8px;
+    display: block;
+}
+
+.nx-swal-popup .swal2-image {
+    margin: 0 auto 12px !important;
+    border-radius: 10px !important;
+}
+
+
+/* =========================================================
+   DELETE CONFIRMATION INPUT FIELD (M6)
+   Text input where the user must type "DELETE" to confirm.
+   Centered text, spaced letters for visual emphasis.
+   Glows red on focus to reinforce the destructive action.
+   ========================================================= */
+.nx-swal-popup .swal2-input,
+.nx-swal-popup .nx-swal-input {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-align: center !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 10px 16px !important;
+    color: #1e293b !important;
+    transition: border-color 0.3s ease !important;
+    margin-top: 12px !important;
+}
+
+/* Red border and glow when the delete input is focused */
+.nx-swal-popup .swal2-input:focus,
+.nx-swal-popup .nx-swal-input:focus {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 12px rgba(220,38,38,0.15) !important;
+    outline: none !important;
+}
+
+
+/* =========================================================
+   VALIDATION ERROR MESSAGE
+   Shown when the user types incorrect confirmation text
+   in the M6 Delete input field.
+   ========================================================= */
+.nx-swal-popup .swal2-validation-message {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    background: #fee2e2 !important;
+    color: #dc2626 !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    margin-top: 8px !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   Company name and website link at the bottom of every
+   NxAlert message box.
+   ========================================================= */
+.nx-swal-footer {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: #94a3b8 !important;
+    text-align: center !important;
+    border-top: none !important;
+    padding: 15px 0 0 0 !important;
+    margin-top: 15px !important;
+    letter-spacing: 0.3px !important;
+}
+
+
+/* =========================================================
+   FOOTER HYPERLINK
+   Blue link to www.nexcore.africa in the footer.
+   Underlines on hover.
+   ========================================================= */
+.nx-swal-link {
+    color: #2563eb !important;
+    text-decoration: none !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    letter-spacing: 0.3px !important;
+}
+
+.nx-swal-link:hover {
+    text-decoration: underline !important;
+    color: #1d4ed8 !important;
+}

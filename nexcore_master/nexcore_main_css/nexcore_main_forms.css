@@ -1,0 +1,701 @@
+/*
+ * ============================================================
+ * NexCore Main Forms CSS
+ * ============================================================
+ *
+ * Component:     nexcore_main_forms
+ * Version:       1.0
+ * Location:      /public/nexcore/master/nexcore_main_css/nexcore_main_forms.css
+ *
+ * Master stylesheet for all form elements across NexCore.
+ * Dark cosmos theme with cyan / green accents.
+ * Font: Montserrat throughout.
+ *
+ * TABLE OF CONTENTS:
+ *   1. FORM CONTAINERS    - .nx-form-group, .nx-form-row, .nx-form-section
+ *   2. LABELS             - .nx-label
+ *   3. TEXT INPUTS         - .nx-input
+ *   4. SELECT DROPDOWNS    - .nx-select
+ *   5. TEXTAREAS           - .nx-textarea
+ *   6. CHECKBOXES & RADIOS - .nx-checkbox, .nx-radio
+ *   7. SELECT2 OVERRIDES   - Dark theme for Select2
+ *   8. FLATPICKR OVERRIDES - Dark theme for flatpickr
+ *   9. FORM VALIDATION     - .nx-invalid, .nx-error-text
+ *  10. FILE UPLOADS        - .nx-file-upload
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =============================================================================
+   1. FORM CONTAINERS
+   ============================================================================= */
+
+.nx-form-group {
+    margin-bottom: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-form-row > * {
+    flex: 1;
+    min-width: 0;
+}
+
+.nx-form-section {
+    padding: 20px;
+    margin-bottom: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-form-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 768px) {
+    .nx-form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+
+/* =============================================================================
+   2. LABELS
+   ============================================================================= */
+
+.nx-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.nx-label-required::after {
+    content: ' *';
+    color: #f43f5e;
+    font-weight: 700;
+}
+
+
+/* =============================================================================
+   3. TEXT INPUTS
+   ============================================================================= */
+
+.nx-input {
+    display: block;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px 14px;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.nx-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 400;
+}
+
+.nx-input:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nx-input:focus {
+    border-color: rgba(0, 212, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
+}
+
+.nx-input:disabled,
+.nx-input[readonly] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.nx-input-sm {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+.nx-input-lg {
+    padding: 13px 18px;
+    font-size: 14px;
+}
+
+
+/* =============================================================================
+   4. SELECT DROPDOWNS
+   ============================================================================= */
+
+.nx-select {
+    display: block;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px 36px 10px 14px;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.35)' d='M6 8.5L1 3.5h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+.nx-select:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nx-select:focus {
+    border-color: rgba(0, 212, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
+}
+
+.nx-select option {
+    background: #0c1120;
+    color: #ffffff;
+    padding: 8px;
+}
+
+.nx-select:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+
+/* =============================================================================
+   5. TEXTAREAS
+   ============================================================================= */
+
+.nx-textarea {
+    display: block;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 10px 14px;
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+    min-height: 100px;
+    resize: vertical;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.nx-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 400;
+}
+
+.nx-textarea:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nx-textarea:focus {
+    border-color: rgba(0, 212, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
+}
+
+.nx-textarea:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =============================================================================
+   6. CHECKBOXES & RADIOS
+   ============================================================================= */
+
+.nx-checkbox,
+.nx-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.nx-checkbox:hover,
+.nx-radio:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nx-checkbox input[type="checkbox"],
+.nx-radio input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #00d4ff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.nx-checkbox-group,
+.nx-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.nx-checkbox-group.nx-vertical,
+.nx-radio-group.nx-vertical {
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* =============================================================================
+   7. SELECT2 OVERRIDES — Dark Theme
+   ============================================================================= */
+
+.select2-container--default .select2-selection--single {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    height: 40px !important;
+    transition: all 0.3s ease !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 40px !important;
+    padding-left: 14px !important;
+    letter-spacing: 0.3px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 40px !important;
+    right: 8px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: rgba(255, 255, 255, 0.35) transparent transparent transparent !important;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single {
+    border-color: rgba(0, 212, 255, 0.4) !important;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.1) !important;
+}
+
+.select2-dropdown {
+    background: #0c1120 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+    overflow: hidden !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 6px !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    margin: 8px !important;
+    width: calc(100% - 16px) !important;
+    box-sizing: border-box !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: rgba(0, 212, 255, 0.4) !important;
+    outline: none !important;
+}
+
+.select2-container--default .select2-results__option {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 10px 14px !important;
+    transition: all 0.15s ease !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: rgba(0, 212, 255, 0.12) !important;
+    color: #00d4ff !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+    background: rgba(5, 150, 105, 0.15) !important;
+    color: #34d399 !important;
+}
+
+.select2-container--default .select2-results__option--disabled {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Select2 multiple */
+.select2-container--default .select2-selection--multiple {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    min-height: 40px !important;
+    padding: 4px 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background: rgba(0, 212, 255, 0.12) !important;
+    border: 1px solid rgba(0, 212, 255, 0.25) !important;
+    border-radius: 4px !important;
+    color: #00d4ff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 3px 8px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: rgba(0, 212, 255, 0.6) !important;
+    margin-right: 4px !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    color: #f43f5e !important;
+}
+
+
+/* =============================================================================
+   8. FLATPICKR OVERRIDES — Dark Theme
+   ============================================================================= */
+
+.flatpickr-calendar {
+    background: #0c1120 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    background: #0c1120 !important;
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.flatpickr-current-month input.cur-year {
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    color: rgba(255, 255, 255, 0.5) !important;
+    fill: rgba(255, 255, 255, 0.5) !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+    color: #00d4ff !important;
+    fill: #00d4ff !important;
+}
+
+span.flatpickr-weekday {
+    color: rgba(255, 255, 255, 0.35) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 11px !important;
+}
+
+.flatpickr-day {
+    color: rgba(255, 255, 255, 0.7) !important;
+    border-radius: 6px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+    transition: all 0.15s ease !important;
+}
+
+.flatpickr-day:hover {
+    background: rgba(0, 212, 255, 0.1) !important;
+    border-color: rgba(0, 212, 255, 0.2) !important;
+    color: #00d4ff !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: #00d4ff !important;
+    border-color: #00d4ff !important;
+    color: #0c1120 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
+}
+
+.flatpickr-day.inRange {
+    background: rgba(0, 212, 255, 0.1) !important;
+    border-color: transparent !important;
+    color: #00d4ff !important;
+    box-shadow: none !important;
+}
+
+.flatpickr-day.today {
+    border-color: rgba(5, 150, 105, 0.5) !important;
+}
+
+.flatpickr-day.today:hover {
+    background: rgba(5, 150, 105, 0.15) !important;
+    color: #34d399 !important;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.flatpickr-time {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.flatpickr-time input {
+    color: #ffffff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+}
+
+.flatpickr-time .flatpickr-am-pm {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.flatpickr-time .flatpickr-time-separator {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+
+/* =============================================================================
+   9. FORM VALIDATION
+   ============================================================================= */
+
+.nx-invalid,
+.nx-input.nx-invalid,
+.nx-select.nx-invalid,
+.nx-textarea.nx-invalid {
+    border-color: rgba(244, 63, 94, 0.5) !important;
+    box-shadow: 0 0 10px rgba(244, 63, 94, 0.1) !important;
+}
+
+.nx-invalid:focus {
+    border-color: rgba(244, 63, 94, 0.6) !important;
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.15) !important;
+}
+
+.nx-error-text {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #f43f5e;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+.nx-success-text {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #34d399;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+.nx-help-text {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+
+/* =============================================================================
+   10. FILE UPLOADS
+   ============================================================================= */
+
+.nx-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-height: 120px;
+}
+
+.nx-file-upload:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    background: rgba(0, 212, 255, 0.03);
+}
+
+.nx-file-upload.nx-file-dragover {
+    border-color: rgba(0, 212, 255, 0.5);
+    background: rgba(0, 212, 255, 0.06);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.nx-file-upload-icon {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.nx-file-upload:hover .nx-file-upload-icon {
+    color: rgba(0, 212, 255, 0.6);
+}
+
+.nx-file-upload-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.3px;
+}
+
+.nx-file-upload-text strong {
+    color: #00d4ff;
+    font-weight: 700;
+}
+
+.nx-file-upload-hint {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+}
+
+.nx-file-upload input[type="file"] {
+    display: none;
+}
+
+.nx-file-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-file-preview-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nx-file-preview-size {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.nx-file-preview-remove {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nx-file-preview-remove:hover {
+    background: rgba(244, 63, 94, 0.2);
+}

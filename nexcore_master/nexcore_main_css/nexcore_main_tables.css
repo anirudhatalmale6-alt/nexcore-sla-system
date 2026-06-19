@@ -1,0 +1,401 @@
+/*
+ * ============================================================
+ * NexCore Main Tables CSS
+ * ============================================================
+ *
+ * Component:     nexcore_main_tables
+ * Version:       1.0
+ * Location:      /public/nexcore/master/nexcore_main_css/nexcore_main_tables.css
+ *
+ * Master styling for all data tables, pagination, badges,
+ * empty states, and loading overlays across the NexCore system.
+ * Dark cosmos theme with glass-morphism containers.
+ *
+ * Accent colours:
+ *   Cyan:   #00d4ff
+ *   Green:  #059669
+ *
+ * Font: Montserrat throughout.
+ *
+ * NexCore Africa Proprietary Limited
+ * www.nexcore.africa
+ * ============================================================
+ */
+
+
+/* =========================================================
+   1. TABLE CONTAINER
+   Glass-morphism card that wraps every data table.
+   ========================================================= */
+.nx-table-wrap {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   2. TABLE BASE
+   Full-width, collapsed borders, consistent font stack.
+   ========================================================= */
+.nx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   3. TABLE HEADER
+   Subtle dark header row with uppercase labels.
+   ========================================================= */
+.nx-table thead th {
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-align: left;
+    white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-table thead th:first-child {
+    padding-left: 20px;
+}
+
+.nx-table thead th:last-child {
+    padding-right: 20px;
+}
+
+
+/* =========================================================
+   4. TABLE BODY
+   Standard cell styling — light text on dark.
+   ========================================================= */
+.nx-table tbody td {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.2s ease;
+}
+
+.nx-table tbody td:first-child {
+    padding-left: 20px;
+}
+
+.nx-table tbody td:last-child {
+    padding-right: 20px;
+}
+
+
+/* =========================================================
+   5. TABLE ROW HOVER
+   Subtle highlight on row hover for readability.
+   ========================================================= */
+.nx-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.nx-table tbody tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+
+/* =========================================================
+   6. TABLE STRIPING
+   Apply .nx-table-striped to the table for alternating rows.
+   ========================================================= */
+.nx-table-striped tbody tr:nth-child(even) {
+    background: rgba(255,255,255,0.015);
+}
+
+.nx-table-striped tbody tr:nth-child(even):hover {
+    background: rgba(255,255,255,0.04);
+}
+
+
+/* =========================================================
+   7. TABLE ACTIONS
+   Inline button group in the last column of each row.
+   ========================================================= */
+.nx-table-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+
+/* =========================================================
+   8. TABLE ACTION BUTTONS
+   Small square icon buttons for edit, delete, view, etc.
+   ========================================================= */
+.nx-table-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.nx-table-btn:hover {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.nx-table-btn.nx-table-btn-edit:hover {
+    color: #00d4ff;
+    border-color: rgba(0,212,255,0.3);
+    box-shadow: 0 0 8px rgba(0,212,255,0.15);
+}
+
+.nx-table-btn.nx-table-btn-delete:hover {
+    color: #f43f5e;
+    border-color: rgba(244,63,94,0.3);
+    box-shadow: 0 0 8px rgba(244,63,94,0.15);
+}
+
+.nx-table-btn.nx-table-btn-view:hover {
+    color: #059669;
+    border-color: rgba(5,150,105,0.3);
+    box-shadow: 0 0 8px rgba(5,150,105,0.15);
+}
+
+
+/* =========================================================
+   9. PAGINATION
+   Row of page buttons centred below the table.
+   ========================================================= */
+.nx-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 16px 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-page-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: none;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-page-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.15);
+}
+
+.nx-page-btn.active {
+    background: linear-gradient(135deg, #00d4ff, #0891b2);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 0 12px rgba(0,212,255,0.3);
+    font-weight: 700;
+}
+
+.nx-page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nx-pagination-info {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.3px;
+    margin: 0 12px;
+}
+
+
+/* =========================================================
+   10. TABLE BADGES
+   Small pill badges for status indicators inside cells.
+   ========================================================= */
+.nx-badge-success {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(5,150,105,0.15);
+    color: #34d399;
+    border: 1px solid rgba(5,150,105,0.25);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-badge-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(217,119,6,0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(217,119,6,0.25);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-badge-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(244,63,94,0.15);
+    color: #fb7185;
+    border: 1px solid rgba(244,63,94,0.25);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-badge-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: rgba(0,212,255,0.12);
+    color: #67e8f9;
+    border: 1px solid rgba(0,212,255,0.2);
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   11. EMPTY TABLE STATE
+   Centred message shown when the table has no rows.
+   ========================================================= */
+.nx-table-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nx-table-empty-icon {
+    font-size: 36px;
+    color: rgba(255,255,255,0.12);
+    margin-bottom: 16px;
+}
+
+.nx-table-empty-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+}
+
+.nx-table-empty-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.3px;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   12. TABLE LOADING
+   Full overlay with a spinner, positioned over the table.
+   ========================================================= */
+.nx-table-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10,14,26,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 12px;
+}
+
+.nx-table-loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255,255,255,0.08);
+    border-top-color: #00d4ff;
+    border-radius: 50%;
+    animation: nxTableSpin 0.8s linear infinite;
+}
+
+@keyframes nxTableSpin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   Stack cells on small screens for readability.
+   ========================================================= */
+@media (max-width: 768px) {
+    .nx-table thead th,
+    .nx-table tbody td {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .nx-table thead th:first-child,
+    .nx-table tbody td:first-child {
+        padding-left: 14px;
+    }
+
+    .nx-table thead th:last-child,
+    .nx-table tbody td:last-child {
+        padding-right: 14px;
+    }
+
+    .nx-pagination {
+        flex-wrap: wrap;
+    }
+}
